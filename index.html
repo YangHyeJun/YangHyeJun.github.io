@@ -268,23 +268,33 @@
   .photo-slot .tag-label{ font-family:var(--mono); font-size:0.7rem; letter-spacing:0.1em; color:var(--ink-faint); }
   .photo-slot .hint{ margin-top:5px; font-size:0.78rem; color:var(--ink-soft); }
 
-  /* ---------- case cards ---------- */
-  .case{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:24px 26px; }
-  .case + .case{ margin-top:16px; }
-  .case-head{ display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px; margin-bottom:16px; }
+  /* ---------- case log ---------- */
+  .case{
+    display:grid; grid-template-columns:52px 1fr; gap:0 24px;
+    padding:32px 0; border-top:1px solid var(--line);
+  }
+  .case:last-of-type{ border-bottom:1px solid var(--line); }
+  .case + .case{ margin-top:0; }
+  .case-num{
+    font-family:var(--mono); font-size:1.4rem; font-weight:700;
+    color:var(--accent); line-height:1; padding-top:4px; flex:none;
+  }
+  .case-body{ min-width:0; }
+  .case-head{ display:flex; flex-wrap:wrap; align-items:center; gap:8px 12px; margin-bottom:14px; }
   .case-head h3{ font-size:1rem; font-weight:600; max-width:46ch; }
   .case-id{
-    flex:none; font-family:var(--mono); font-size:0.7rem; font-weight:600; letter-spacing:0.04em;
-    background:var(--accent-soft); color:var(--accent-ink); padding:4px 9px; border-radius:3px;
+    font-family:var(--mono); font-size:0.7rem; font-weight:600; letter-spacing:0.06em;
+    color:var(--ink-faint);
   }
-  .case dl{ margin:0; display:grid; grid-template-columns:88px 1fr; gap:10px 16px; }
-  @media (max-width:560px){ .case dl{ grid-template-columns:1fr; gap:2px 0; } }
+  .case dl{ margin:0; display:grid; grid-template-columns:76px 1fr; gap:8px 14px; }
+  @media (max-width:560px){ .case{ grid-template-columns:1fr; gap:6px 0; } .case dl{ grid-template-columns:1fr; gap:2px 0; } }
   .case dt{ font-family:var(--mono); font-size:0.72rem; letter-spacing:0.08em; color:var(--ink-faint); padding-top:2px; }
   .case dd{ margin:0; font-size:0.93rem; }
-  .case dd + dt{ margin-top:10px; }
+  .case dd + dt{ margin-top:8px; }
   @media (max-width:560px){ .case dt{ margin-top:10px; } }
-  .case-note{ margin-top:36px; }
+  .case-note{ margin-top:24px; }
   .case-note p{ font-size:0.86rem; color:var(--ink-soft); }
+  #experience .card{ border-top:3px solid var(--accent); }
 
   /* ---------- projects ---------- */
   .proj-links{ display:flex; gap:10px; align-items:center; }
@@ -454,24 +464,32 @@
       <div class="sec-head"><span class="eyebrow">04 · CASE LOG</span><h2>Technical Highlights — 문제 해결 사례</h2></div>
 
       <div class="case">
-        <div class="case-head"><h3>앱 배포 지연 문제 해결 — Shorebird 코드 푸시 도입</h3><span class="case-id">DEPLOY-01</span></div>
-        <dl>
-          <dt>문제</dt><dd>iOS 심사(평균 <b>1주 이상</b>) · Android 배포(<b>2~3일</b>)로 긴급 버그를 즉시 대응하기 어려웠음</dd>
-          <dt>해결</dt><dd>Flutter용 실시간 코드 패치 도구 <b>Shorebird</b> 도입, Fastlane/CI 연동 및 Flavor별 릴리즈 체계 구축</dd>
-          <dt>결과</dt><dd>사내 서비스 Fireside에 실제 적용해 검증, <b>네이티브 코드·에셋 등 패치 불가 영역까지 명확히 구분</b>해 팀 배포 정책 수립에 반영</dd>
-        </dl>
+        <div class="case-num">01</div>
+        <div class="case-body">
+          <div class="case-head"><h3>앱 배포 지연 문제 해결 — Shorebird 코드 푸시 도입</h3><span class="case-id">DEPLOY-01</span></div>
+          <dl>
+            <dt>문제</dt><dd>iOS 심사(평균 <b>1주 이상</b>) · Android 배포(<b>2~3일</b>)로 긴급 버그를 즉시 대응하기 어려웠음</dd>
+            <dt>해결</dt><dd>Flutter용 실시간 코드 패치 도구 <b>Shorebird</b> 도입, Fastlane/CI 연동 및 Flavor별 릴리즈 체계 구축</dd>
+            <dt>결과</dt><dd>사내 서비스 Fireside에 실제 적용해 검증, <b>네이티브 코드·에셋 등 패치 불가 영역까지 명확히 구분</b>해 팀 배포 정책 수립에 반영</dd>
+          </dl>
+        </div>
       </div>
 
       <div class="case">
-        <div class="case-head"><h3>크로스플랫폼 크래시 모니터링 공백 해소 — Sentry 도입</h3><span class="case-id">MONITOR-02</span></div>
-        <dl>
-          <dt>문제</dt><dd>Firebase Crashlytics가 <b>Windows를 지원하지 않아</b> 크래시 추적 사각지대 발생</dd>
-          <dt>해결</dt><dd><code>sentry_flutter</code>를 앱 전역 error boundary 형태로 적용, Shorebird 패치 버전을 커스텀 태그로 연동</dd>
-          <dt>결과</dt><dd>Flutter + Native가 혼재된 구조에서도 <b>하나의 대시보드에서 스택트레이스 통합 관리</b> 가능해짐</dd>
-        </dl>
+        <div class="case-num">02</div>
+        <div class="case-body">
+          <div class="case-head"><h3>크로스플랫폼 크래시 모니터링 공백 해소 — Sentry 도입</h3><span class="case-id">MONITOR-02</span></div>
+          <dl>
+            <dt>문제</dt><dd>Firebase Crashlytics가 <b>Windows를 지원하지 않아</b> 크래시 추적 사각지대 발생</dd>
+            <dt>해결</dt><dd><code>sentry_flutter</code>를 앱 전역 error boundary 형태로 적용, Shorebird 패치 버전을 커스텀 태그로 연동</dd>
+            <dt>결과</dt><dd>Flutter + Native가 혼재된 구조에서도 <b>하나의 대시보드에서 스택트레이스 통합 관리</b> 가능해짐</dd>
+          </dl>
+        </div>
       </div>
 
       <div class="case" id="case-03">
+        <div class="case-num">03</div>
+        <div class="case-body">
         <div class="case-head"><h3>FSS — Flutter 앱 화면 캡처 방지 지원 확장</h3><span class="case-id">FSS-03</span></div>
         <dl>
           <dt>문제</dt><dd>Kotlin/Swift로 개발한 화면 캡처 방지 SDK가 Flutter로 만들어진 화면에서는 정상 동작하지 않아, 캡처 시 보호 처리 없이 빈 화면만 나오는 문제 발생</dd>
@@ -540,24 +558,31 @@
           </svg>
           <figcaption>View 계층을 끝까지 탐색해 실제로 Flutter 화면이 그려지는 <code>FlutterSurfaceView</code>를 찾은 뒤, 실제 렌더 타입에 따라 서로 다른 캡처 방법을 분기 적용</figcaption>
         </figure>
+        </div>
       </div>
 
       <div class="case">
-        <div class="case-head"><h3>사내 다중 제품 공통 화면 Template 개발</h3><span class="case-id">UI-04</span></div>
-        <dl>
-          <dt>문제</dt><dd>Wrapsody, Wrapsody eCo, Fasoo View, Fasoo View+, Fireside 등 사내 모바일 제품 <b>5종</b>에서 유사한 화면을 제품마다 각각 새로 구현해 중복 개발 비용 발생</dd>
-          <dt>해결</dt><dd>제품 전반에 공통으로 쓰이는 화면들을 재사용 가능한 Template(공통 컴포넌트)로 분리해 표준화, 각 제품은 필요한 부분만 커스터마이징해 적용하도록 설계</dd>
-          <dt>결과</dt><dd><b>5개 제품에 적용</b>해 제품별 반복 개발 공수 절감, 제품 간 UI 일관성 확보</dd>
-        </dl>
+        <div class="case-num">04</div>
+        <div class="case-body">
+          <div class="case-head"><h3>사내 다중 제품 공통 화면 Template 개발</h3><span class="case-id">UI-04</span></div>
+          <dl>
+            <dt>문제</dt><dd>Wrapsody, Wrapsody eCo, Fasoo View, Fasoo View+, Fireside 등 사내 모바일 제품 <b>5종</b>에서 유사한 화면을 제품마다 각각 새로 구현해 중복 개발 비용 발생</dd>
+            <dt>해결</dt><dd>제품 전반에 공통으로 쓰이는 화면들을 재사용 가능한 Template(공통 컴포넌트)로 분리해 표준화, 각 제품은 필요한 부분만 커스터마이징해 적용하도록 설계</dd>
+            <dt>결과</dt><dd><b>5개 제품에 적용</b>해 제품별 반복 개발 공수 절감, 제품 간 UI 일관성 확보</dd>
+          </dl>
+        </div>
       </div>
 
       <div class="case">
-        <div class="case-head"><h3>Firebase Dynamic Links 종료 대응 리서치</h3><span class="case-id">RESEARCH-06</span></div>
-        <dl>
-          <dt>문제</dt><dd>2025년 8월 Dynamic Links 서비스 종료 예정 → 딥링크 대체 방안 필요</dd>
-          <dt>해결</dt><dd>App Scheme, Universal/App Links, 서드파티 솔루션(Branch, AppsFlyer, AirBridge)을 비교 분석해 Flutter 적용 가이드 정리 (Google I/O Extended 2025 인천 참여 기반)</dd>
-          <dt>결과</dt><dd>팀 내 대응 방안 문서화</dd>
-        </dl>
+        <div class="case-num">05</div>
+        <div class="case-body">
+          <div class="case-head"><h3>Firebase Dynamic Links 종료 대응 리서치</h3><span class="case-id">RESEARCH-06</span></div>
+          <dl>
+            <dt>문제</dt><dd>2025년 8월 Dynamic Links 서비스 종료 예정 → 딥링크 대체 방안 필요</dd>
+            <dt>해결</dt><dd>App Scheme, Universal/App Links, 서드파티 솔루션(Branch, AppsFlyer, AirBridge)을 비교 분석해 Flutter 적용 가이드 정리 (Google I/O Extended 2025 인천 참여 기반)</dd>
+            <dt>결과</dt><dd>팀 내 대응 방안 문서화</dd>
+          </dl>
+        </div>
       </div>
 
       <div class="case-note">
