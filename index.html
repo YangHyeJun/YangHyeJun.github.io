@@ -323,7 +323,7 @@
 <body>
 
 <nav class="topnav" aria-label="섹션 이동">
-  <a href="#intro">INTRO</a><a href="#skills">SKILLS</a><a href="#experience">EXPERIENCE</a><a href="#cases">CASES</a><a href="#projects">PROJECTS</a><a href="#education">EDUCATION</a>
+  <a href="#intro">01 · INTRO</a><a href="#skills">02 · SKILLS</a><a href="#experience">03 · EXPERIENCE</a><a href="#cases">04 · CASES</a><a href="#projects">05 · PROJECTS</a><a href="#education">06 · EDUCATION</a>
 </nav>
 
 <div class="shell">
@@ -355,7 +355,7 @@
           <div class="stat"><div class="num">2024.08–</div><div class="label">Fasoo 재직 중<br>Fireside + FSS 동시 개발</div></div>
           <div class="stat"><div class="num">5</div><div class="label">공통 Template 적용<br>사내 제품 수</div></div>
           <div class="stat"><div class="num">50%</div><div class="label">FSS 워터마크 기능<br>Kotlin 전환 기여도</div></div>
-          <div class="stat"><div class="num">6</div><div class="label">기술 문제 해결<br>Case Log</div></div>
+          <div class="stat"><div class="num">6</div><div class="label">직접 해결한<br>기술 이슈</div></div>
         </div>
       </div>
     </section>
@@ -367,7 +367,7 @@
           <p class="eyebrow" style="margin-bottom:12px;">LANGUAGE &amp; FRAMEWORK</p>
           <div class="skill-row"><span class="skill-name">Flutter / Dart</span><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
           <div class="skill-row"><span class="skill-name">Kotlin</span><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
-          <div class="skill-row"><span class="skill-name">C++</span><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+          <div class="skill-row"><span class="skill-name">C++</span><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></div>
           <div class="skill-row"><span class="skill-name">C</span><span class="meter"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></div>
           <div class="skill-row"><span class="skill-name">Swift</span><span class="skill-note">iOS App Extension 개발 경험</span></div>
           <div class="skill-row"><span class="skill-name">MethodChannel / Platform Channel</span><span class="skill-note">Native ↔ Flutter 연동</span></div>
@@ -410,8 +410,7 @@
             <li>화면 캡처 방지 기능과 워터마크 표시 기능으로 구성된 SDK 중, <b>워터마크 표시 기능의 Kotlin 전환을 담당 (기여도 50%)</b></li>
             <li>Flutter 기반 앱에서는 SDK 캡처 방지 처리가 동작하지 않던 문제를 <b>근본 원인까지 분석해 해결</b> — 과정은 <a href="#case-03">Case&nbsp;FSS-03</a> 참고</li>
           </ul>
-          <!-- 사진 추가: 워터마크 적용 화면 / 캡처 방지 동작 스크린샷 -->
-          <div class="photo-slot"><div class="tag-label">PHOTO PENDING</div><div class="hint">워터마크 적용 화면 · 캡처 방지 동작 스크린샷</div></div>
+          <figure style="margin:16px 0 0;"><img src="images/fss-watermark.png" alt="FSS 워터마크 적용 화면" loading="lazy" style="display:block; width:100%; border-radius:var(--radius); border:1px solid var(--line);"></figure>
         </div>
 
         <div class="sub">
@@ -420,8 +419,6 @@
             <li>Wrapsody, Wrapsody eCo, Fasoo View, Fasoo View+, Fireside 등 <b>5개 제품</b>에서 반복적으로 새로 구현되던 유사 화면들을 재사용 가능한 공통 Template으로 표준화</li>
             <li>각 제품은 공통 Template을 가져다 필요한 부분만 커스터마이징하도록 설계해, <b>제품별 반복 개발 비용 절감</b>과 5개 제품 간 UI 일관성 확보</li>
           </ul>
-          <!-- 사진 추가: Template 적용 전/후 비교 또는 5개 제품 화면 비교 -->
-          <div class="photo-slot"><div class="tag-label">PHOTO PENDING</div><div class="hint">Template 적용 전/후 비교 · 5개 제품 화면 비교</div></div>
         </div>
 
         <div class="sub">
@@ -447,8 +444,10 @@
           <li>반지 <b>펌웨어 업데이트(C)</b> 진행 — BLE 프로토콜 송수신·파싱·패킷 구조 설계</li>
         </ul>
         <p class="stack-line"><b>STACK</b> · Flutter(Dart) · Kotlin · C · BLE</p>
-        <!-- 사진 추가: Vanzy 반지 제품 및 앱 화면 -->
-        <div class="photo-slot"><div class="tag-label">PHOTO PENDING</div><div class="hint">Vanzy 반지 제품 · 앱 화면 사진</div></div>
+        <div class="gallery" role="list">
+          <figure class="phone" role="listitem"><img src="images/vanzy-app.png" alt="Vanzy 앱 화면" loading="lazy"><figcaption>앱 화면</figcaption></figure>
+          <figure class="phone" role="listitem"><img src="images/vanzy-app2.png" alt="Vanzy 앱 화면 2" loading="lazy"><figcaption>앱 화면 2</figcaption></figure>
+        </div>
       </div>
     </section>
 
@@ -609,8 +608,10 @@
           <li>예약 요청 시 충전소 주인에게 수락/거절 알림 발송, 결과를 구매자에게 재전달하는 <b>양방향 알림 흐름</b> 설계</li>
         </ul>
         <p class="stack-line"><b>STACK</b> · Flutter(Dart) · Google Maps API · RESTful API · OOP</p>
-        <!-- 사진 추가: 지도 화면 · 예약 화면 스크린샷 -->
-        <div class="photo-slot"><div class="tag-label">PHOTO PENDING</div><div class="hint">지도 화면 · 예약 화면 스크린샷</div></div>
+        <div class="gallery" role="list">
+          <figure class="phone" role="listitem"><img src="images/capstone-map.png" alt="지도 화면" loading="lazy"><figcaption>지도</figcaption></figure>
+          <figure class="phone" role="listitem"><img src="images/capstone2.png" alt="예약 화면" loading="lazy"><figcaption>예약</figcaption></figure>
+        </div>
       </div>
 
       <div class="card">
@@ -637,7 +638,7 @@
 
 <footer>
   <hr class="rule">
-  <p class="thanks">Thank you for your time — 📞 010-9904-8923 · ✉ maybe0426@naver.com</p>
+  <p class="thanks">Thank you for your time.</p>
   <p class="fine">Portfolio last updated 2026.08</p>
 </footer>
 
