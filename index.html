@@ -552,15 +552,6 @@
       </div>
 
       <div class="case">
-        <div class="case-head"><h3>Unity 연동 기술 검토</h3><span class="case-id">EVAL-05</span></div>
-        <dl>
-          <dt>문제</dt><dd>Flutter 앱에 Unity 콘텐츠를 연동해야 하는 요구사항 발생</dd>
-          <dt>해결</dt><dd><code>flutter_unity_widget</code> 라이브러리를 검토했으나 <b>18개월 이상 업데이트가 중단</b>돼 최신 Flutter/Unity 버전을 지원하지 않고, 비동기 통신만 지원해 실시간 데이터 전송 시 성능 저하가 발생함을 확인</dd>
-          <dt>결과</dt><dd>라이브러리 한계를 근거로 <b>미채택 결정</b>, Unity Framework(iOS)/AAR(Android)를 직접 임베드하고 MethodChannel 기반 자체 브릿지를 구축하는 방향으로 기술 방향 전환 제안</dd>
-        </dl>
-      </div>
-
-      <div class="case">
         <div class="case-head"><h3>Firebase Dynamic Links 종료 대응 리서치</h3><span class="case-id">RESEARCH-06</span></div>
         <dl>
           <dt>문제</dt><dd>2025년 8월 Dynamic Links 서비스 종료 예정 → 딥링크 대체 방안 필요</dd>
