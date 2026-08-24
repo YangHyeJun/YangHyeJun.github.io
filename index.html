@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>양혜준 — Mobile Engineer</title>
+<meta name="description" content="Flutter · Kotlin · Swift 기반 모바일 엔지니어 양혜준의 포트폴리오">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ---------- tokens ---------- */
+  :root{
+    --bg:#F1F4F7;
+    --surface:#FFFFFF;
+    --surface-2:#E8ECF1;
+    --ink:#10161D;
+    --ink-soft:#4C5866;
+    --ink-faint:#7C8794;
+    --line:#CBD3DC;
+    --accent:#2A54E0;
+    --accent-ink:#1B3AA6;
+    --accent-soft:#E1E8FC;
+    --good:#1C7A4E;
+    --good-soft:#DFF3E8;
+    --shadow: 0 1px 0 rgba(16,22,29,0.04);
+    --radius: 3px;
+    --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --sans: 'IBM Plex Sans KR', 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0A0E13;
+      --surface:#111820;
+      --surface-2:#182029;
+      --ink:#E7ECF2;
+      --ink-soft:#9AA6B2;
+      --ink-faint:#69747F;
+      --line:#242D38;
+      --accent:#7096FF;
+      --accent-ink:#AFC2FF;
+      --accent-soft:#182747;
+      --good:#4FBE86;
+      --good-soft:#12291D;
+      --shadow: 0 1px 0 rgba(0,0,0,0.3);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0A0E13;
+    --surface:#111820;
+    --surface-2:#182029;
+    --ink:#E7ECF2;
+    --ink-soft:#9AA6B2;
+    --ink-faint:#69747F;
+    --line:#242D38;
+    --accent:#7096FF;
+    --accent-ink:#AFC2FF;
+    --accent-soft:#182747;
+    --good:#4FBE86;
+    --good-soft:#12291D;
+    --shadow: 0 1px 0 rgba(0,0,0,0.3);
+  }
+
+  /* ---------- base ---------- */
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; }
+  }
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{ background:var(--accent-soft); color:var(--accent-ink); }
+  a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:3px; }
+  a:focus-visible, button:focus-visible, .navlink:focus-visible{
+    outline:2px solid var(--accent); outline-offset:2px; border-radius:2px;
+  }
+  h1,h2,h3{ font-family:var(--mono); font-weight:600; letter-spacing:-0.01em; text-wrap:balance; margin:0; }
+  p{ margin:0; }
+  .mono{ font-family:var(--mono); }
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:0.72rem;
+    font-weight:600;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+  }
+
+  /* ---------- shell layout ---------- */
+  .shell{
+    display:grid;
+    grid-template-columns: 200px minmax(0,760px);
+    justify-content:center;
+    gap:56px;
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 24px 120px;
+  }
+  @media (max-width: 880px){
+    .shell{ grid-template-columns: minmax(0,1fr); gap:0; padding:0 20px 90px; }
+  }
+
+  /* ---------- nav rail (desktop) ---------- */
+  .rail{
+    position:sticky;
+    top:48px;
+    align-self:start;
+    padding-top:64px;
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+  }
+  .rail .brand{
+    font-family:var(--mono);
+    font-weight:700;
+    font-size:0.95rem;
+    margin-bottom:18px;
+    color:var(--ink);
+  }
+  .rail .brand span{ color:var(--accent); }
+  .navlink{
+    font-family:var(--mono);
+    font-size:0.78rem;
+    letter-spacing:0.06em;
+    color:var(--ink-faint);
+    text-decoration:none;
+    padding:7px 0 7px 14px;
+    border-left:2px solid var(--line);
+  }
+  .navlink:hover{ color:var(--ink); border-left-color:var(--ink-faint); }
+
+  /* mobile top nav */
+  .topnav{
+    display:none;
+    position:sticky; top:0; z-index:20;
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+    overflow-x:auto;
+    white-space:nowrap;
+    padding:12px 20px;
+    gap:18px;
+  }
+  .topnav a{
+    font-family:var(--mono); font-size:0.75rem; letter-spacing:0.05em;
+    color:var(--ink-soft); text-decoration:none; margin-right:18px;
+  }
+  @media (max-width: 880px){
+    .rail{ display:none; }
+    .topnav{ display:block; }
+  }
+
+  main{ min-width:0; padding-top:64px; }
+  section{ padding-bottom:64px; border-bottom:1px solid var(--line); margin-bottom:64px; scroll-margin-top:24px; }
+  section:last-of-type{ border-bottom:none; }
+
+  /* ---------- hero ---------- */
+  .hero-status{
+    display:inline-flex; align-items:center; gap:7px;
+    font-family:var(--mono); font-size:0.75rem; letter-spacing:0.04em;
+    color:var(--good); background:var(--good-soft);
+    border:1px solid color-mix(in srgb, var(--good) 35%, transparent);
+    padding:5px 10px 5px 8px; border-radius:100px; margin-bottom:22px;
+  }
+  .hero-status .dot{ width:6px; height:6px; border-radius:50%; background:var(--good); }
+  .hero h1{ font-size:clamp(2.1rem, 5vw, 2.9rem); line-height:1.15; }
+  .hero .role{
+    margin-top:10px; font-family:var(--mono); font-size:1rem; color:var(--accent); font-weight:500;
+  }
+  .hero .pitch{
+    margin-top:22px; max-width:62ch; font-size:1.02rem; color:var(--ink-soft);
+  }
+  .contact-row{ margin-top:26px; display:flex; flex-wrap:wrap; gap:10px; }
+  .chip{
+    display:inline-flex; align-items:center; gap:6px;
+    font-family:var(--mono); font-size:0.78rem;
+    border:1px solid var(--line); border-radius:100px;
+    padding:7px 13px; color:var(--ink-soft); background:var(--surface);
+  }
+  .chip a{ color:inherit; text-decoration:none; }
+
+  /* ---------- stat plate ---------- */
+  .stat-plate{
+    margin-top:56px;
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line); border-radius:var(--radius);
+    overflow:hidden;
+  }
+  @media (max-width:640px){ .stat-plate{ grid-template-columns:repeat(2,1fr); } }
+  .stat{ background:var(--surface); padding:18px 16px; }
+  .stat .num{ font-family:var(--mono); font-size:1.5rem; font-weight:700; color:var(--accent); }
+  .stat .label{ margin-top:6px; font-size:0.8rem; color:var(--ink-soft); line-height:1.4; }
+
+  /* ---------- section heads ---------- */
+  .sec-head{ display:flex; align-items:baseline; gap:14px; margin-bottom:28px; }
+  .sec-head h2{ font-size:1.3rem; }
+  .sec-head .eyebrow{ order:-1; }
+  .sec-num{ font-family:var(--mono); color:var(--ink-faint); font-size:0.85rem; }
+
+  /* ---------- skills ---------- */
+  .skills-grid{ display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+  @media (max-width:640px){ .skills-grid{ grid-template-columns:1fr; gap:32px; } }
+  .skill-row{ display:flex; align-items:center; justify-content:space-between; gap:10px; padding:10px 0; border-bottom:1px dashed var(--line); }
+  .skill-row:last-child{ border-bottom:none; }
+  .skill-name{ font-size:0.92rem; }
+  .skill-note{ font-family:var(--mono); font-size:0.72rem; color:var(--ink-faint); }
+  .meter{ display:flex; gap:4px; }
+  .meter i{ width:14px; height:8px; background:var(--surface-2); border-radius:1px; }
+  .meter i.on{ background:var(--accent); }
+  .tag-row{ display:flex; flex-wrap:wrap; gap:8px; margin-top:4px; }
+  .tag{
+    font-family:var(--mono); font-size:0.74rem; color:var(--ink-soft);
+    background:var(--surface-2); border-radius:3px; padding:5px 9px;
+  }
+  .tag.ai{ background:var(--accent-soft); color:var(--accent-ink); font-weight:500; }
+
+  /* ---------- experience cards ---------- */
+  .card{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:26px 28px; box-shadow:var(--shadow);
+  }
+  .card + .card{ margin-top:22px; }
+  .card-head{ display:flex; flex-wrap:wrap; align-items:center; gap:10px 14px; margin-bottom:6px; }
+  .card-head h3{ font-size:1.08rem; font-weight:600; }
+  .date-chip{
+    font-family:var(--mono); font-size:0.74rem; color:var(--ink-soft);
+    border:1px solid var(--line); border-radius:100px; padding:3px 10px;
+  }
+  .role-chip{
+    font-family:var(--mono); font-size:0.72rem; color:var(--ink-faint);
+    border:1px dashed var(--line); border-radius:100px; padding:3px 10px;
+  }
+  .sub{ margin-top:22px; padding-top:20px; border-top:1px dashed var(--line); }
+  .sub:first-of-type{ margin-top:20px; }
+  .sub-head{ display:flex; flex-wrap:wrap; align-items:center; gap:8px 10px; margin-bottom:10px; }
+  .sub-head h4{ font-family:var(--sans); font-weight:600; font-size:0.98rem; margin:0; }
+  ul.bullets{ margin:0; padding-left:1.15em; }
+  ul.bullets li{ margin:5px 0; font-size:0.94rem; color:var(--ink); }
+  ul.bullets li::marker{ color:var(--ink-faint); }
+  ul.bullets b{ font-weight:600; }
+  ul.bullets code{ font-family:var(--mono); font-size:0.85em; background:var(--surface-2); padding:1px 5px; border-radius:2px; }
+  .stack-line{ margin-top:16px; font-family:var(--mono); font-size:0.76rem; color:var(--ink-faint); }
+  .stack-line b{ color:var(--ink-soft); font-weight:600; }
+
+  /* ---------- photo slot ---------- */
+  .photo-slot{
+    margin-top:14px;
+    border:1px dashed var(--ink-faint);
+    border-radius:var(--radius);
+    padding:22px 16px;
+    text-align:center;
+    background:
+      repeating-linear-gradient(135deg, transparent, transparent 7px, color-mix(in srgb, var(--ink-faint) 10%, transparent) 7px, color-mix(in srgb, var(--ink-faint) 10%, transparent) 8px);
+  }
+  .photo-slot .tag-label{ font-family:var(--mono); font-size:0.7rem; letter-spacing:0.1em; color:var(--ink-faint); }
+  .photo-slot .hint{ margin-top:5px; font-size:0.78rem; color:var(--ink-soft); }
+
+  /* ---------- case cards ---------- */
+  .case{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:24px 26px; }
+  .case + .case{ margin-top:16px; }
+  .case-head{ display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px; margin-bottom:16px; }
+  .case-head h3{ font-size:1rem; font-weight:600; max-width:46ch; }
+  .case-id{
+    flex:none; font-family:var(--mono); font-size:0.7rem; font-weight:600; letter-spacing:0.04em;
+    background:var(--accent-soft); color:var(--accent-ink); padding:4px 9px; border-radius:3px;
+  }
+  .case dl{ margin:0; display:grid; grid-template-columns:88px 1fr; gap:10px 16px; }
+  @media (max-width:560px){ .case dl{ grid-template-columns:1fr; gap:2px 0; } }
+  .case dt{ font-family:var(--mono); font-size:0.72rem; letter-spacing:0.08em; color:var(--ink-faint); padding-top:2px; }
+  .case dd{ margin:0; font-size:0.93rem; }
+  .case dd + dt{ margin-top:10px; }
+  @media (max-width:560px){ .case dt{ margin-top:10px; } }
+  .case-note{ margin-top:36px; }
+  .case-note p{ font-size:0.86rem; color:var(--ink-soft); }
+
+  /* ---------- projects ---------- */
+  .proj-links{ display:flex; gap:10px; align-items:center; }
+  .btn{
+    font-family:var(--mono); font-size:0.78rem; text-decoration:none;
+    border:1px solid var(--accent); color:var(--accent); border-radius:100px;
+    padding:6px 13px; display:inline-flex; align-items:center; gap:6px;
+  }
+  .btn:hover{ background:var(--accent-soft); }
+  .gallery{
+    display:flex; gap:14px; overflow-x:auto; padding:20px 2px 6px; margin-top:8px;
+    scroll-snap-type:x proximity;
+  }
+  .phone{
+    flex:none; width:150px; scroll-snap-align:start;
+    border:6px solid var(--ink); border-radius:20px; overflow:hidden;
+    background:var(--ink); box-shadow:var(--shadow);
+  }
+  :root:not([data-theme="light"]) .phone, :root[data-theme="dark"] .phone{ border-color:var(--surface-2); }
+  .phone img{ display:block; width:100%; height:auto; }
+  .phone figcaption{
+    font-family:var(--mono); font-size:0.68rem; text-align:center; color:var(--ink-faint);
+    padding:6px 0 2px; background:var(--bg);
+  }
+
+  /* ---------- education / footer ---------- */
+  .edu-line{ display:flex; flex-wrap:wrap; align-items:baseline; gap:10px 14px; }
+  .edu-line h3{ font-size:1rem; font-weight:600; }
+  footer{ max-width:760px; margin:0 auto; padding:0 24px 80px; }
+  @media (max-width:880px){ footer{ padding:0 20px 60px; } }
+  footer .rule{ border:none; border-top:1px solid var(--line); margin:0 0 32px; }
+  footer .thanks{ font-family:var(--mono); font-size:0.85rem; color:var(--ink-soft); }
+  footer .fine{ margin-top:10px; font-family:var(--mono); font-size:0.72rem; color:var(--ink-faint); }
+</style>
+</head>
+<body>
+
+<nav class="topnav" aria-label="섹션 이동">
+  <a href="#intro">INTRO</a><a href="#skills">SKILLS</a><a href="#experience">EXPERIENCE</a><a href="#cases">CASES</a><a href="#projects">PROJECTS</a><a href="#education">EDUCATION</a>
+</nav>
+
+<div class="shell">
+  <aside class="rail" aria-label="섹션 이동">
+    <div class="brand">양혜준<span>.</span></div>
+    <a class="navlink" href="#intro">INTRO</a>
+    <a class="navlink" href="#skills">SKILLS</a>
+    <a class="navlink" href="#experience">EXPERIENCE</a>
+    <a class="navlink" href="#cases">CASE&nbsp;LOG</a>
+    <a class="navlink" href="#projects">PROJECTS</a>
+    <a class="navlink" href="#education">EDUCATION</a>
+  </aside>
+
+  <main>
+
+    <section id="intro">
+      <div class="hero">
+        <span class="hero-status"><span class="dot"></span>재직 중 · Fasoo &amp; Sparrow · 2024.08–</span>
+        <h1>양혜준</h1>
+        <p class="role">Mobile Engineer — Flutter / Kotlin / Swift</p>
+        <p class="pitch">Fasoo에서 2024년 8월부터 모바일 개발자로 재직하며, 사내 협업 메신저 <b>Fireside</b> 개발과 화면 캡처 방지 보안 SDK <b>FSS(Fasoo Smart Screen)</b> 개발을 함께 담당하고 있습니다. Flutter 기반 서비스 개발과 Kotlin/Swift 기반 네이티브 SDK 개발을 넘나들며 크로스플랫폼과 네이티브 양쪽에서 실제 서비스에 기여해왔습니다. 새로운 기술을 빠르게 학습해 문제를 해결하는 것을 좋아하고, Claude·Codex 등 AI 코딩 도구를 적극 활용해 개발 생산성을 높이는 데도 익숙합니다.</p>
+        <div class="contact-row">
+          <span class="chip">📞 010-9904-8923</span>
+          <span class="chip"><a href="mailto:maybe0426@naver.com">✉ maybe0426@naver.com</a></span>
+          <span class="chip"><a href="https://github.com/YangHyeJun" target="_blank" rel="noopener">GitHub ↗</a></span>
+        </div>
+
+        <div class="stat-plate">
+          <div class="stat"><div class="num">2024.08–</div><div class="label">Fasoo 재직 중<br>Fireside + FSS 동시 개발</div></div>
+          <div class="stat"><div class="num">5</div><div class="label">공통 Template 적용<br>사내 제품 수</div></div>
+          <div class="stat"><div class="num">50%</div><div class="label">FSS 워터마크 기능<br>Kotlin 전환 기여도</div></div>
+          <div class="stat"><div class="num">6</div><div class="label">기술 문제 해결<br>Case Log</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="sec-head"><span class="eyebrow">02 · SKILLS</span><h2>Skills &amp; Tools</h2></div>
+      <div class="skills-grid">
+        <div>
+          <p class="eyebrow" style="margin-bottom:12px;">LANGUAGE &amp; FRAMEWORK</p>
+          <div class="skill-row"><span class="skill-name">Flutter / Dart</span><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+          <div class="skill-row"><span class="skill-name">Kotlin</span><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+          <div class="skill-row"><span class="skill-name">C++</span><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+          <div class="skill-row"><span class="skill-name">C</span><span class="meter"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></div>
+          <div class="skill-row"><span class="skill-name">Swift</span><span class="skill-note">iOS App Extension 개발 경험</span></div>
+          <div class="skill-row"><span class="skill-name">MethodChannel / Platform Channel</span><span class="skill-note">Native ↔ Flutter 연동</span></div>
+        </div>
+        <div>
+          <p class="eyebrow" style="margin-bottom:12px;">TOOLS</p>
+          <div class="tag-row">
+            <span class="tag">Github</span><span class="tag">Gitlab CI/CD</span><span class="tag">Android Studio</span>
+            <span class="tag">VS Code</span><span class="tag">Slack</span><span class="tag">Notion</span>
+            <span class="tag">Weblate</span>
+            <span class="tag ai">Claude</span><span class="tag ai">OpenAI Codex</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="sec-head"><span class="eyebrow">03 · EXPERIENCE</span><h2>Work Experience</h2></div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>Fasoo &amp; Sparrow</h3>
+          <span class="date-chip">2024.08 – 현재</span>
+        </div>
+
+        <div class="sub">
+          <div class="sub-head"><h4>Fireside — 사내 협업 메신저</h4><span class="tag">Flutter</span></div>
+          <ul class="bullets">
+            <li><b>문서관리 + 채팅 통합</b> B2B 협업 메신저 개발 담당</li>
+            <li><b>문서 결재</b>, 채팅방 임시저장 메시지 유지, 지정 기간 알림 끄기, <b>메시지 요약·번역</b> 등 신규 기능 개발</li>
+            <li>메시지 전송 큐 구조 리팩토링</li>
+          </ul>
+          <!-- 사진 추가: Fireside 앱 화면. 아래 div를 <img src="images/fireside.png" alt="Fireside 앱 화면"> 로 교체하세요 -->
+          <div class="photo-slot"><div class="tag-label">PHOTO PENDING</div><div class="hint">Fireside 앱 화면 스크린샷</div></div>
+        </div>
+
+        <div class="sub">
+          <div class="sub-head"><h4>FSS (Fasoo Smart Screen) — 화면 캡처 방지 · 워터마크 SDK</h4><span class="tag">Kotlin</span><span class="tag">Swift</span></div>
+          <ul class="bullets">
+            <li>화면 캡처 방지 기능과 워터마크 표시 기능으로 구성된 SDK 중, <b>워터마크 표시 기능의 Kotlin 전환을 담당 (기여도 50%)</b></li>
+            <li>Flutter 기반 앱에서는 SDK 캡처 방지 처리가 동작하지 않던 문제를 <b>근본 원인까지 분석해 해결</b> — 과정은 <a href="#case-03">Case&nbsp;FSS-03</a> 참고</li>
+          </ul>
+          <!-- 사진 추가: 워터마크 적용 화면 / 캡처 방지 동작 스크린샷 -->
+          <div class="photo-slot"><div class="tag-label">PHOTO PENDING</div><div class="hint">워터마크 적용 화면 · 캡처 방지 동작 스크린샷</div></div>
+        </div>
+
+        <div class="sub">
+          <div class="sub-head"><h4>공통 화면 Template</h4><span class="tag">5 Products</span></div>
+          <ul class="bullets">
+            <li>Wrapsody, Wrapsody eCo, Fasoo View, Fasoo View+, Fireside 등 <b>5개 제품</b>에서 반복적으로 새로 구현되던 유사 화면들을 재사용 가능한 공통 Template으로 표준화</li>
+            <li>각 제품은 공통 Template을 가져다 필요한 부분만 커스터마이징하도록 설계해, <b>제품별 반복 개발 비용 절감</b>과 5개 제품 간 UI 일관성 확보</li>
+          </ul>
+          <!-- 사진 추가: Template 적용 전/후 비교 또는 5개 제품 화면 비교 -->
+          <div class="photo-slot"><div class="tag-label">PHOTO PENDING</div><div class="hint">Template 적용 전/후 비교 · 5개 제품 화면 비교</div></div>
+        </div>
+
+        <div class="sub">
+          <div class="sub-head"><h4>기타</h4></div>
+          <ul class="bullets">
+            <li>iOS App Extension으로 사내 전화 수신 화면에 발신자 소속·직급 정보를 표시하는 기능 개발 (Spotlight Extension 활용), 통화 종료 후 로컬 알림 흐름 설계</li>
+            <li>MVVM 기반 클린 아키텍처 스터디 리드, 코드 리뷰 진행</li>
+          </ul>
+        </div>
+
+        <p class="stack-line"><b>STACK</b> · Flutter · Kotlin · Swift · iOS App Extension · MethodChannel · GitLab CI/CD · MVVM</p>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>Coxspace</h3>
+          <span class="date-chip">2023.09 – 2023.12</span>
+          <span class="role-chip">인턴</span>
+        </div>
+        <ul class="bullets">
+          <li><b>BLE 기반 반지형 웨어러블 마우스 'Vanzy'</b> 개발 참여 — 손가락 움직임으로 커서를 조작하고 특정 제스처로 앱 단축 기능을 실행하는 제품</li>
+          <li>전화 받기/거절, 최근 사용 앱 실행 등 <b>신규 제스처 기능 3종</b> 추가 및 관련 권한 처리 (Android 공식 문서 기반)</li>
+          <li>반지 <b>펌웨어 업데이트(C)</b> 진행 — BLE 프로토콜 송수신·파싱·패킷 구조 설계</li>
+        </ul>
+        <p class="stack-line"><b>STACK</b> · Flutter(Dart) · Kotlin · C · BLE</p>
+        <!-- 사진 추가: Vanzy 반지 제품 및 앱 화면 -->
+        <div class="photo-slot"><div class="tag-label">PHOTO PENDING</div><div class="hint">Vanzy 반지 제품 · 앱 화면 사진</div></div>
+      </div>
+    </section>
+
+    <section id="cases">
+      <div class="sec-head"><span class="eyebrow">04 · CASE LOG</span><h2>Technical Highlights — 문제 해결 사례</h2></div>
+
+      <div class="case">
+        <div class="case-head"><h3>앱 배포 지연 문제 해결 — Shorebird 코드 푸시 도입</h3><span class="case-id">DEPLOY-01</span></div>
+        <dl>
+          <dt>문제</dt><dd>iOS 심사(평균 <b>1주 이상</b>) · Android 배포(<b>2~3일</b>)로 긴급 버그를 즉시 대응하기 어려웠음</dd>
+          <dt>해결</dt><dd>Flutter용 실시간 코드 패치 도구 <b>Shorebird</b> 도입, Fastlane/CI 연동 및 Flavor별 릴리즈 체계 구축</dd>
+          <dt>결과</dt><dd>사내 서비스 Fireside에 실제 적용해 검증, <b>네이티브 코드·에셋 등 패치 불가 영역까지 명확히 구분</b>해 팀 배포 정책 수립에 반영</dd>
+        </dl>
+      </div>
+
+      <div class="case">
+        <div class="case-head"><h3>크로스플랫폼 크래시 모니터링 공백 해소 — Sentry 도입</h3><span class="case-id">MONITOR-02</span></div>
+        <dl>
+          <dt>문제</dt><dd>Firebase Crashlytics가 <b>Windows를 지원하지 않아</b> 크래시 추적 사각지대 발생</dd>
+          <dt>해결</dt><dd><code>sentry_flutter</code>를 앱 전역 error boundary 형태로 적용, Shorebird 패치 버전을 커스텀 태그로 연동</dd>
+          <dt>결과</dt><dd>Flutter + Native가 혼재된 구조에서도 <b>하나의 대시보드에서 스택트레이스 통합 관리</b> 가능해짐</dd>
+        </dl>
+      </div>
+
+      <div class="case" id="case-03">
+        <div class="case-head"><h3>FSS — Flutter 앱 화면 캡처 방지 지원 확장</h3><span class="case-id">FSS-03</span></div>
+        <dl>
+          <dt>문제</dt><dd>Kotlin/Swift로 개발한 화면 캡처 방지 SDK가 Flutter로 만들어진 화면에서는 정상 동작하지 않아, 캡처 시 보호 처리 없이 빈 화면만 나오는 문제 발생</dd>
+          <dt>해결</dt><dd>PixelCopy, TextureView, MediaProjection 등 <b>7가지 이상 방법</b>을 직접 검증하며 View 계층을 끝까지 탐색, <code>FlutterSurfaceView</code>가 원인임을 특정하고 렌더 타입별(TextureView/SurfaceView) 캡처·보호 로직을 분기 구현</dd>
+          <dt>결과</dt><dd>공식 문서에 명확한 가이드가 없던 이슈를 <b>근본 원인까지 파고들어 해결</b>, Flutter 기반 제품까지 SDK 지원 범위 확대</dd>
+        </dl>
+        <!-- 사진 추가: View 계층 구조(FlutterSurfaceView) 다이어그램 또는 캡처 성공/실패 비교 -->
+        <div class="photo-slot"><div class="tag-label">DIAGRAM PENDING</div><div class="hint">View 계층 구조(FlutterSurfaceView) 다이어그램 · 캡처 성공/실패 비교</div></div>
+      </div>
+
+      <div class="case">
+        <div class="case-head"><h3>사내 다중 제품 공통 화면 Template 개발</h3><span class="case-id">UI-04</span></div>
+        <dl>
+          <dt>문제</dt><dd>Wrapsody, Wrapsody eCo, Fasoo View, Fasoo View+, Fireside 등 사내 모바일 제품 <b>5종</b>에서 유사한 화면을 제품마다 각각 새로 구현해 중복 개발 비용 발생</dd>
+          <dt>해결</dt><dd>제품 전반에 공통으로 쓰이는 화면들을 재사용 가능한 Template(공통 컴포넌트)로 분리해 표준화, 각 제품은 필요한 부분만 커스터마이징해 적용하도록 설계</dd>
+          <dt>결과</dt><dd><b>5개 제품에 적용</b>해 제품별 반복 개발 공수 절감, 제품 간 UI 일관성 확보</dd>
+        </dl>
+      </div>
+
+      <div class="case">
+        <div class="case-head"><h3>Unity 연동 기술 검토</h3><span class="case-id">EVAL-05</span></div>
+        <dl>
+          <dt>문제</dt><dd>Flutter 앱에 Unity 콘텐츠를 연동해야 하는 요구사항 발생</dd>
+          <dt>해결</dt><dd><code>flutter_unity_widget</code> 라이브러리를 검토했으나 <b>18개월 이상 업데이트가 중단</b>돼 최신 Flutter/Unity 버전을 지원하지 않고, 비동기 통신만 지원해 실시간 데이터 전송 시 성능 저하가 발생함을 확인</dd>
+          <dt>결과</dt><dd>라이브러리 한계를 근거로 <b>미채택 결정</b>, Unity Framework(iOS)/AAR(Android)를 직접 임베드하고 MethodChannel 기반 자체 브릿지를 구축하는 방향으로 기술 방향 전환 제안</dd>
+        </dl>
+      </div>
+
+      <div class="case">
+        <div class="case-head"><h3>Firebase Dynamic Links 종료 대응 리서치</h3><span class="case-id">RESEARCH-06</span></div>
+        <dl>
+          <dt>문제</dt><dd>2025년 8월 Dynamic Links 서비스 종료 예정 → 딥링크 대체 방안 필요</dd>
+          <dt>해결</dt><dd>App Scheme, Universal/App Links, 서드파티 솔루션(Branch, AppsFlyer, AirBridge)을 비교 분석해 Flutter 적용 가이드 정리 (Google I/O Extended 2025 인천 참여 기반)</dd>
+          <dt>결과</dt><dd>팀 내 대응 방안 문서화</dd>
+        </dl>
+      </div>
+
+      <div class="case-note">
+        <p><span class="eyebrow">그 외</span> — Google I/O 등 컨퍼런스 참여로 Jetpack Compose, Adaptive Design, Kotlin Multiplatform 등 최신 Android 트렌드 지속 학습</p>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="sec-head"><span class="eyebrow">05 · PROJECTS</span><h2>Projects</h2></div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>Motu — 국내/해외 주식 시세·거래 앱</h3>
+          <span class="date-chip">2026.02 – 2026.06</span>
+        </div>
+        <ul class="bullets">
+          <li><b>KIS OpenAPI</b> 기반으로 국내/해외 주식 시세 조회 및 거래 기능을 제공하는 개인 프로젝트</li>
+          <li><b>소켓 기반 실시간 가격·체결량 반영</b>, 홈 대시보드(자산 요약·뉴스·투자자 수급 정보), 카테고리별 랭킹, 즐겨찾기, 물타기 계산기, 다크모드 등 구현</li>
+          <li><b>Riverpod</b>로 상태 관리, <b>Flutter Secure Storage</b>로 민감 정보 보호, Model/Repository/ViewModel/View 계층을 분리한 <b>MVVM</b> 구조로 설계</li>
+        </ul>
+        <p class="stack-line"><b>STACK</b> · Flutter(Dart) · Riverpod · Flutter Secure Storage · KIS OpenAPI · MVVM</p>
+        <div class="proj-links" style="margin-top:14px;">
+          <a class="btn" href="https://github.com/YangHyeJun/Motu_Flutter" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+        <div class="gallery" role="list">
+          <figure class="phone" role="listitem"><img src="images/home.jpg" alt="Motu 홈 화면" loading="lazy"><figcaption>홈</figcaption></figure>
+          <figure class="phone" role="listitem"><img src="images/stock.jpg" alt="Motu 주식 화면" loading="lazy"><figcaption>주식</figcaption></figure>
+          <figure class="phone" role="listitem"><img src="images/detail.jpg" alt="Motu 상세 화면" loading="lazy"><figcaption>상세</figcaption></figure>
+          <figure class="phone" role="listitem"><img src="images/more.jpg" alt="Motu 더보기 화면" loading="lazy"><figcaption>더보기</figcaption></figure>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h3>캡스톤 디자인 — 개인 전기차 충전기 공유 플랫폼</h3></div>
+        <ul class="bullets">
+          <li>개인 소유 전기차 충전기를 등록·공유할 수 있는 플랫폼을 <b>기획부터 개발까지</b> 진행</li>
+          <li>공용 충전소 / 개인 충전기 / 충전중 충전기를 지도에 색상별로 구분 표시, 차종별 예상 충전 시간 계산, 리뷰 기능 구현</li>
+          <li>예약 요청 시 충전소 주인에게 수락/거절 알림 발송, 결과를 구매자에게 재전달하는 <b>양방향 알림 흐름</b> 설계</li>
+        </ul>
+        <p class="stack-line"><b>STACK</b> · Flutter(Dart) · Google Maps API · RESTful API · OOP</p>
+        <!-- 사진 추가: 지도 화면 · 예약 화면 스크린샷 -->
+        <div class="photo-slot"><div class="tag-label">PHOTO PENDING</div><div class="hint">지도 화면 · 예약 화면 스크린샷</div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h3>네이버 부스트캠프 — 챌린지 트레이닝</h3></div>
+        <ul class="bullets">
+          <li>프로세스 메모리 구현, 화성 달력, 스택 구현 등 매일 새로운 알고리즘·설계 미션 수행</li>
+          <li>매주 동료와 협업 설계·구현 진행, 매일 피어리뷰로 코드를 설명·평가하며 커뮤니케이션 역량 강화</li>
+        </ul>
+        <p class="stack-line"><b>STACK</b> · Github/Github Gist · Notion · Slack</p>
+      </div>
+    </section>
+
+    <section id="education" style="border-bottom:none; margin-bottom:0; padding-bottom:0;">
+      <div class="sec-head"><span class="eyebrow">06 · EDUCATION</span><h2>Education</h2></div>
+      <div class="edu-line">
+        <h3>중앙대학교 소프트웨어공학과</h3>
+        <span class="date-chip">2022.03 – 2024.02 · 졸업</span>
+      </div>
+      <p style="margin-top:10px; color:var(--ink-soft); font-size:0.92rem;">동아리 'DevLabs' 활동</p>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <hr class="rule">
+  <p class="thanks">Thank you for your time — 📞 010-9904-8923 · ✉ maybe0426@naver.com</p>
+  <p class="fine">Portfolio last updated 2026.08</p>
+</footer>
+
+</body>
+</html>
