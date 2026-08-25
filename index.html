@@ -470,6 +470,15 @@
             <dt>해결</dt><dd>Flutter용 실시간 코드 패치 도구 <b>Shorebird</b> 도입, Fastlane/CI 연동 및 Flavor별 릴리즈 체계 구축</dd>
             <dt>결과</dt><dd>사내 서비스 Fireside에 실제 적용해 검증, <b>네이티브 코드·에셋 등 패치 불가 영역까지 명확히 구분</b>해 팀 배포 정책 수립에 반영</dd>
           </dl>
+          <p class="eyebrow" style="margin-top:22px; margin-bottom:8px;">패치 가능 / 불가 구분</p>
+          <div class="tag-row">
+            <span class="tag ai">Dart 코드 변경 ✓</span>
+            <span class="tag ai">UI 수정 ✓</span>
+            <span class="tag fail">Native 코드 (Kotlin · Swift)</span>
+            <span class="tag fail">앱 권한 변경</span>
+            <span class="tag fail">에셋 · 이미지</span>
+          </div>
+          <p style="margin-top:14px; font-size:0.88rem; color:var(--ink-soft);">단순 도입에 그치지 않고 패치 가능·불가 영역을 직접 검증해 분류했습니다. 이를 기반으로 긴급 버그는 Shorebird로 즉시 대응하고, Native 영역 변경이 포함된 수정은 기존 배포 프로세스를 유지하는 <b>이중 배포 정책</b>을 팀에 공유했습니다.</p>
         </div>
       </div>
 
@@ -478,9 +487,9 @@
         <div class="case-body">
           <div class="case-head"><h3>크로스플랫폼 크래시 모니터링 공백 해소 — Sentry 도입</h3><span class="case-id">MONITOR-02</span></div>
           <dl>
-            <dt>문제</dt><dd>Firebase Crashlytics가 <b>Windows를 지원하지 않아</b> 크래시 추적 사각지대 발생</dd>
-            <dt>해결</dt><dd><code>sentry_flutter</code>를 앱 전역 error boundary 형태로 적용, Shorebird 패치 버전을 커스텀 태그로 연동</dd>
-            <dt>결과</dt><dd>Flutter + Native가 혼재된 구조에서도 <b>하나의 대시보드에서 스택트레이스 통합 관리</b> 가능해짐</dd>
+            <dt>문제</dt><dd>Firebase Crashlytics가 <b>Windows를 지원하지 않아</b> 크래시 추적 사각지대 발생. Windows에서 발생한 크래시는 재현조차 어려워 원인 파악에 오랜 시간이 소요됐음</dd>
+            <dt>해결</dt><dd><code>sentry_flutter</code>를 도입해 <code>runZonedGuarded</code>로 Flutter 전역 예외를 포착하고, <code>PlatformDispatcher.onError</code>로 비동기 예외까지 커버. Flutter · Android · iOS · Windows 레이어 전체를 단일 Sentry 프로젝트로 수집하도록 구성</dd>
+            <dt>결과</dt><dd>이전에는 재현이 어려웠던 Windows 크래시를 스택트레이스로 <b>즉시 원인 파악</b> 가능해짐. Flutter + Native가 혼재된 구조에서도 <b>하나의 대시보드에서 통합 관리</b></dd>
           </dl>
         </div>
       </div>
