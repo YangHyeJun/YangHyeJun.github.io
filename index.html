@@ -499,7 +499,7 @@
       <div class="case" id="case-03">
         <div class="case-num">03</div>
         <div class="case-body">
-        <div class="case-head"><h3>FSS — Flutter 앱 화면 캡처 방지 지원 확장</h3><span class="case-id">FSS-03</span></div>
+        <div class="case-head"><h3>FSS — 공식 문서에 명확한 가이드가 없던 이슈를 근본 원인까지 파고들어 해결</h3><span class="case-id">FSS-03</span></div>
         <dl>
           <dt>문제</dt><dd>Kotlin/Swift로 개발한 화면 캡처 방지 SDK가 Flutter로 만들어진 화면에서는 정상 동작하지 않아, 캡처 시 보호 처리 없이 빈 화면만 나오는 문제 발생</dd>
           <dt>해결</dt><dd>PixelCopy, TextureView, MediaProjection 등 <b>7가지 이상 방법</b>을 직접 검증하며 View 계층을 끝까지 탐색, <code>FlutterSurfaceView</code>가 원인임을 특정하고 렌더 타입별(TextureView/SurfaceView) 캡처·보호 로직을 분기 구현</dd>
