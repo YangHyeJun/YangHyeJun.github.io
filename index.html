@@ -414,7 +414,9 @@
           <div class="sub-head"><h4>ImagePicker — 커스텀 이미지 선택 모듈</h4><span class="tag">Kotlin</span></div>
           <ul class="bullets">
             <li>Fireside 채팅의 이미지 첨부 품질 문제를 해결하기 위해 <b>이미지 피커를 네이티브(Kotlin)로 직접 개발</b></li>
-            <li>압축 과정에서 저하되던 <b>화질을 개선</b>하고, 자르기·회전 처리 시 발생하던 <b>메모리 사용량을 최적화</b></li>
+            <li>전송 목적에 맞춰 <b>이미지 화질(압축 수준)을 선택</b>할 수 있도록 지원</li>
+            <li>자르기·회전 처리 중 원본 해상도 Bitmap을 그대로 다뤄 발생하던 <b>OOM(메모리 부족) 문제</b>를, 단계별로 불필요해진 Bitmap을 즉시 <code>recycle()</code>하고 <b>inSampleSize 기반 다운샘플링</b>을 적용해 해결</li>
+            <li>Fireside뿐 아니라 <b>다른 사내 제품에도 붙여 쓸 수 있도록 독립 라이브러리로 개발</b></li>
           </ul>
         </div>
 
