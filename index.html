@@ -455,14 +455,60 @@
         <div class="card-head">
           <h3>Coxspace</h3>
           <span class="date-chip">2023.09 – 2023.12</span>
-          <span class="role-chip">인턴</span>
+          <span class="role-chip">현장실습(인턴)</span>
         </div>
         <ul class="bullets">
           <li><b>BLE 기반 반지형 웨어러블 마우스 'Vanzy'</b> 개발 참여 — 손가락 움직임으로 커서를 조작하고 특정 제스처로 앱 단축 기능을 실행하는 제품</li>
-          <li>전화 받기/거절, 최근 사용 앱 실행 등 <b>신규 제스처 기능 3종</b> 추가 및 관련 권한 처리 (Android 공식 문서 기반)</li>
-          <li>반지 <b>펌웨어 업데이트(C)</b> 진행 — BLE 프로토콜 송수신·파싱·패킷 구조 설계</li>
+          <li><b>Vanzy의 Android 연동 앱 기능 개발</b> 담당 — 제스처 입력 → BLE 데이터 전송 → 앱 기능 실행으로 이어지는 흐름을 구현</li>
         </ul>
-        <p class="stack-line"><b>STACK</b> · Flutter(Dart) · Kotlin · C · BLE</p>
+
+        <div class="sub">
+          <div class="sub-head"><h4>전화 수신 · 종료 기능 — BLE 데이터 프로토콜 확장</h4><span class="tag">Kotlin</span><span class="tag">BLE</span></div>
+          <ul class="bullets">
+            <li>Vanzy–앱 간 BLE 통신 데이터 프로토콜에 <b>신규 카테고리를 추가</b>하고, 수신한 제스처 데이터값에 따라 전화 수신·종료가 실행되도록 구현</li>
+            <li>Flutter에서 다룰 수 없는 <b>Android 전화 API를 Kotlin으로 구현한 뒤 플러그인 형태로 연동</b></li>
+            <li>전화 기능 사용에 필요한 <b>런타임 권한 처리 흐름 설계</b></li>
+          </ul>
+        </div>
+
+        <div class="sub">
+          <div class="sub-head"><h4>제스처 기반 앱 실행 기능</h4><span class="tag">Kotlin</span><span class="tag">Android SDK</span></div>
+          <ul class="bullets">
+            <li>기기의 <b>최근 사용 앱 목록(아이콘·앱 이름)을 조회</b>해 제스처에 등록하고, 제스처 입력 시 등록된 앱이 실행되도록 구현</li>
+            <li>실행 불가 앱 필터링, 중복 앱 제거, 목록 개수 제한, <b>사용량순·최근순 정렬</b> 기능 추가</li>
+          </ul>
+        </div>
+
+        <div class="sub">
+          <div class="sub-head"><h4>포그라운드 서비스 전환 — 연결 안정성 확보</h4><span class="tag">Android SDK</span></div>
+          <ul class="bullets">
+            <li>앱이 화면에 없을 때도 BLE 데이터 수신과 기능 실행이 가능하도록 <b>포그라운드 서비스 구조로 전환</b></li>
+            <li>별도 테스트 앱으로 <b>백그라운드 상태에서 앱 실행이 가능한지 사전 검증</b>한 뒤 본 앱에 적용</li>
+            <li>서비스 상태에서 수신한 통신 데이터 파싱 및 기능 연결 구현</li>
+            <li>모드 변경 시 알림이 갱신되지 않던 문제를 <b>수신 데이터값 분석으로 원인을 찾아 해결</b></li>
+          </ul>
+        </div>
+
+        <div class="sub">
+          <div class="sub-head"><h4>사용성 · 안정성 개선</h4></div>
+          <ul class="bullets">
+            <li>권한 <b>거부·부분 허용 상황을 반영</b>한 권한 설정 화면 이동 흐름과 UI 설계</li>
+            <li>주변 Vanzy 기기 <b>수동 검색 기능</b> 추가</li>
+            <li>뒤로가기 시 앱이 종료되는 문제의 원인 분석 및 수정</li>
+            <li>앱 목록 로딩 작업을 <b>별도 스레드로 분리</b>해 화면 끊김 현상 개선</li>
+          </ul>
+        </div>
+
+        <div class="sub">
+          <div class="sub-head"><h4>반지 펌웨어</h4><span class="tag">C</span></div>
+          <ul class="bullets">
+            <li>반지 <b>펌웨어 업데이트(C)</b> 진행 — BLE 프로토콜 송수신·파싱·패킷 구조 설계</li>
+          </ul>
+        </div>
+
+        <p style="margin-top:20px; font-size:0.88rem; color:var(--ink-soft);">제스처 → BLE 데이터 전송 → 앱 기능 실행(전화 수신·종료, 앱 실행, 시스템 설정 조절)까지 이어지는 <b>하드웨어 연동 기능을 완성</b>했습니다. Flutter에서 처리할 수 없는 영역은 <b>Kotlin 네이티브 API를 플러그인으로 연동</b>해 해결했고, 원인이 불분명한 동작은 <b>Android 공식 문서를 근거로 분석</b>하되, 개별 증상이 아닌 <b>앱–서비스–디바이스 간 상호작용</b>을 고려해 해결했습니다.</p>
+
+        <p class="stack-line"><b>STACK</b> · Flutter(Dart) · Kotlin · Android SDK · C · BLE</p>
         <div class="gallery" role="list">
           <figure class="phone" role="listitem"><img src="images/vanzy-app.png" alt="Vanzy 앱 화면" loading="lazy"><figcaption>앱 화면</figcaption></figure>
           <figure class="phone" role="listitem"><img src="images/vanzy-app2.png" alt="Vanzy 앱 화면 2" loading="lazy"><figcaption>앱 화면 2</figcaption></figure>
