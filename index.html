@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>양혜준 — Mobile Engineer</title>
-<meta name="description" content="Flutter · Kotlin · Swift 기반 모바일 엔지니어 양혜준의 포트폴리오">
+<title>양혜준 — Android Developer</title>
+<meta name="description" content="Kotlin 기반 Android 개발자 양혜준의 포트폴리오">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">
 <style>
@@ -353,8 +353,8 @@
       <div class="hero">
         <span class="hero-status"><span class="dot"></span>재직 중 · 파수에이아이 · 2024.08~</span>
         <h1>양혜준</h1>
-        <p class="role">Mobile Engineer — Flutter / Kotlin / Swift</p>
-        <p class="pitch">Flutter · Kotlin · Swift를 넘나들며 크로스플랫폼과 네이티브 양쪽에서 실제 제품을 만드는 모바일 엔지니어입니다. 문제가 생기면 표면적인 원인에 머물지 않고 근본까지 파고드는 편이고, SDK 내부나 플랫폼 동작 방식도 직접 검증하며 해결책을 찾습니다. 새로운 기술을 빠르게 익혀 실제 서비스에 적용하는 것을 좋아하고, AI 코딩 도구를 적극 활용해 개발 생산성을 높이는 데도 익숙합니다.</p>
+        <p class="role">Android Developer — Kotlin · Android SDK</p>
+        <p class="pitch">Kotlin으로 Android 앱과 SDK를 개발합니다. 화면 캡처 방지·워터마크 SDK를 개발하면서 Android View 계층과 렌더링 방식을 직접 다뤘고, 인턴 때는 BLE 웨어러블 기기와 Android 앱을 연동해 제스처 한 번으로 전화를 받고 앱을 실행하는 기능을 만들었습니다. Flutter로 사내 메신저를 Android·iOS에 출시해 운영하고 있어, 크로스플랫폼 앱에 네이티브 기능을 붙이는 작업도 해 왔습니다. 개발 과정에서는 Claude·Codex 같은 AI 코딩 도구를 적극적으로 씁니다.</p>
         <div class="contact-row">
           <span class="chip">📞 010-9904-8923</span>
           <span class="chip"><a href="mailto:maybe0426@naver.com">✉️ maybe0426@naver.com</a></span>
@@ -367,8 +367,8 @@
       <div class="skills-grid">
         <div>
           <p class="eyebrow" style="margin-bottom:12px;">LANGUAGE &amp; FRAMEWORK</p>
-          <div class="skill-row"><span class="skill-name">Flutter / Dart</span><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
           <div class="skill-row"><span class="skill-name">Kotlin</span><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+          <div class="skill-row"><span class="skill-name">Flutter / Dart</span><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
           <div class="skill-row"><span class="skill-name">C++</span><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
           <div class="skill-row"><span class="skill-name">C</span><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></div>
           <div class="skill-row"><span class="skill-name">Swift</span><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></div>
@@ -394,57 +394,58 @@
           <span class="role-chip">현장실습(인턴)</span>
         </div>
         <ul class="bullets">
-          <li><b>BLE 기반 반지형 웨어러블 마우스 'Vanzy'</b> 개발 참여 — 손가락 움직임으로 커서를 조작하고 특정 제스처로 앱 단축 기능을 실행하는 제품</li>
-          <li><b>Vanzy의 Android 연동 앱 기능 개발</b> 담당 — 제스처 입력 → BLE 데이터 전송 → 앱 기능 실행으로 이어지는 흐름을 구현</li>
+          <li><b>BLE 반지형 웨어러블 마우스 'Vanzy'와 Android 앱을 연동</b>하는 기능 개발 담당 — 손가락 제스처 → BLE 데이터 전송 → 앱 기능 실행으로 이어지는 흐름 구현</li>
+          <li>앱 쪽 BLE 프로토콜 확장부터 <b>반지 펌웨어(C) 수정</b>까지, 기기와 앱 양쪽 작업 진행</li>
         </ul>
 
         <div class="sub">
-          <div class="sub-head"><h4>전화 수신 · 종료 기능 — BLE 데이터 프로토콜 확장</h4><span class="tag">Kotlin</span><span class="tag">BLE</span></div>
-          <ul class="bullets">
-            <li>Vanzy–앱 간 BLE 통신 데이터 프로토콜에 <b>신규 카테고리를 추가</b>하고, 수신한 제스처 데이터값에 따라 전화 수신·종료가 실행되도록 구현</li>
-            <li>Flutter에서 다룰 수 없는 <b>Android 전화 API를 Kotlin으로 구현한 뒤 플러그인 형태로 연동</b></li>
-            <li>전화 기능 사용에 필요한 <b>런타임 권한 처리 흐름 설계</b></li>
-          </ul>
-        </div>
-
-        <div class="sub">
-          <div class="sub-head"><h4>제스처 기반 앱 실행 기능</h4><span class="tag">Kotlin</span><span class="tag">Android SDK</span></div>
-          <ul class="bullets">
-            <li>기기의 <b>최근 사용 앱 목록(아이콘·앱 이름)을 조회</b>해 제스처에 등록하고, 제스처 입력 시 등록된 앱이 실행되도록 구현</li>
-            <li>실행 불가 앱 필터링, 중복 앱 제거, 목록 개수 제한, <b>사용량순·최근순 정렬</b> 기능 추가</li>
-          </ul>
-        </div>
-
-        <div class="sub">
-          <div class="sub-head"><h4>포그라운드 서비스 전환 — 연결 안정성 확보</h4><span class="tag">Android SDK</span></div>
+          <div class="sub-head"><h4>백그라운드 동작 — 포그라운드 서비스 전환 · Android 실행 제약 대응</h4><span class="tag">Android SDK</span><span class="tag">BLE</span></div>
           <ul class="bullets">
             <li>앱이 화면에 없을 때도 BLE 데이터 수신과 기능 실행이 가능하도록 <b>포그라운드 서비스 구조로 전환</b></li>
             <li>별도 테스트 앱으로 <b>백그라운드 상태에서 앱 실행이 가능한지 사전 검증</b>한 뒤 본 앱에 적용</li>
+            <li>Android 10부터 백그라운드에서 다른 앱(Activity) 실행이 막히는 제약을 <b>"다른 앱 위에 표시"(<code>SYSTEM_ALERT_WINDOW</code>) 권한</b>으로 해결, 권한이 없으면 설정 화면으로 안내</li>
             <li>서비스 상태에서 수신한 통신 데이터 파싱 및 기능 연결 구현</li>
             <li>모드 변경 시 알림이 갱신되지 않던 문제를 <b>수신 데이터값 분석으로 원인을 찾아 해결</b></li>
           </ul>
         </div>
 
         <div class="sub">
-          <div class="sub-head"><h4>사용성 · 안정성 개선</h4></div>
+          <div class="sub-head"><h4>BLE 통신 프로토콜 · 반지 펌웨어</h4><span class="tag">BLE</span><span class="tag">C</span></div>
           <ul class="bullets">
-            <li>권한 <b>거부·부분 허용 상황을 반영</b>한 권한 설정 화면 이동 흐름과 UI 설계</li>
+            <li>반지 <b>펌웨어 업데이트(C)</b> 진행 — BLE 프로토콜 송수신·파싱·패킷 구조 설계</li>
+            <li>Vanzy–앱 간 BLE 통신 데이터 프로토콜에 <b>신규 카테고리를 추가</b>해 전화 제어 명령을 전달할 수 있도록 확장</li>
+          </ul>
+        </div>
+
+        <div class="sub">
+          <div class="sub-head"><h4>기기 연결 · 권한 처리</h4><span class="tag">Android SDK</span></div>
+          <ul class="bullets">
             <li>주변 Vanzy 기기 <b>수동 검색 기능</b> 추가</li>
+            <li>권한 <b>거부·부분 허용 상황을 반영</b>한 권한 설정 화면 이동 흐름과 UI 설계</li>
+            <li>전화 기능 사용에 필요한 <b>런타임 권한 처리 흐름 설계</b></li>
+          </ul>
+        </div>
+
+        <div class="sub">
+          <div class="sub-head"><h4>제스처로 실행하는 기능 — 전화 수신·종료, 앱 실행</h4><span class="tag">Kotlin</span></div>
+          <ul class="bullets">
+            <li>수신한 제스처 데이터값에 따라 전화 수신·종료가 실행되도록 <b>Android 전화 API를 Kotlin으로 구현</b>하고, Flutter 기반 앱에는 플러그인 형태로 연동</li>
+            <li>기기의 <b>최근 사용 앱 목록(아이콘·앱 이름)을 조회</b>해 제스처에 등록하고, 제스처 입력 시 등록된 앱이 실행되도록 구현</li>
+            <li>실행 불가 앱 필터링, 중복 앱 제거, 목록 개수 제한, <b>사용량순·최근순 정렬</b> 기능 추가</li>
+          </ul>
+        </div>
+
+        <div class="sub">
+          <div class="sub-head"><h4>사용성 개선</h4></div>
+          <ul class="bullets">
             <li>뒤로가기 시 앱이 종료되는 문제의 원인 분석 및 수정</li>
             <li>앱 목록 로딩 작업을 <b>별도 스레드로 분리</b>해 화면 끊김 현상 개선</li>
           </ul>
         </div>
 
-        <div class="sub">
-          <div class="sub-head"><h4>반지 펌웨어</h4><span class="tag">C</span></div>
-          <ul class="bullets">
-            <li>반지 <b>펌웨어 업데이트(C)</b> 진행 — BLE 프로토콜 송수신·파싱·패킷 구조 설계</li>
-          </ul>
-        </div>
+        <p style="margin-top:20px; font-size:0.88rem; color:var(--ink-soft);">제스처 입력부터 BLE 전송, 앱 기능 실행(전화 수신·종료, 앱 실행, 시스템 설정 조절)까지 <b>기기와 앱을 잇는 기능</b>을 만들었습니다. 앱이 백그라운드에 있어도 기기 데이터를 받을 수 있도록 <b>서비스 구조를 바꿨고</b>, 원인이 불분명한 동작은 Android 공식 문서를 기준으로 <b>앱·서비스·기기 중 어디서 생긴 문제인지 나눠 확인</b>하며 고쳤습니다.</p>
 
-        <p style="margin-top:20px; font-size:0.88rem; color:var(--ink-soft);">제스처 → BLE 데이터 전송 → 앱 기능 실행(전화 수신·종료, 앱 실행, 시스템 설정 조절)까지 이어지는 <b>하드웨어 연동 기능을 완성</b>했습니다. Flutter에서 처리할 수 없는 영역은 <b>Kotlin 네이티브 API를 플러그인으로 연동</b>해 해결했고, 원인이 불분명한 동작은 <b>Android 공식 문서를 근거로 분석</b>하되, 개별 증상이 아닌 <b>앱–서비스–디바이스 간 상호작용</b>을 고려해 해결했습니다.</p>
-
-        <p class="stack-line"><b>STACK</b> · Flutter(Dart) · Kotlin · Android SDK · C · BLE</p>
+        <p class="stack-line"><b>STACK</b> · Kotlin · Android SDK · BLE · C · Flutter(Dart)</p>
         <div class="gallery" role="list">
           <figure class="phone" role="listitem"><img src="images/vanzy-app.png" alt="Vanzy 앱 화면" loading="lazy"><figcaption>앱 화면</figcaption></figure>
           <figure class="phone" role="listitem"><img src="images/vanzy-app2.png" alt="Vanzy 앱 화면 2" loading="lazy"><figcaption>앱 화면 2</figcaption></figure>
@@ -458,13 +459,25 @@
         </div>
 
         <div class="sub">
-          <div class="sub-head"><h4>FSS (Fasoo Smart Screen) — 화면 캡처 방지 · 워터마크 SDK</h4><span class="tag">Kotlin</span><span class="tag">Swift</span></div>
+          <div class="sub-head"><h4>FSS (Fasoo Smart Screen) — 화면 캡처 방지 · 워터마크 SDK</h4><span class="tag">Kotlin</span><span class="tag">Android SDK</span></div>
           <ul class="bullets">
-            <li>앱 시작 시 <b>외부에서 보안 정책을 주입받아 SDK를 등록</b>하고, 캡처 방지·워터마크 기능을 적용하고 싶은 화면·프레임워크 지점에서 <b>기능 실행/해제 함수를 호출</b>하는 구조로 설계 — 소비 앱이 정책·적용 범위를 자유롭게 제어할 수 있도록 함</li>
-            <li>화면 캡처 방지 기능과 워터마크 표시 기능으로 구성된 SDK 중, <b>워터마크 표시 기능의 Kotlin 전환을 담당 (기여도 50%)</b></li>
-            <li>Flutter 기반 앱에서는 SDK 캡처 방지 처리가 동작하지 않던 문제를 <b>원인 분석 후 해결</b> — 과정은 <a href="#case-03">Case&nbsp;FSS-03</a> 참고</li>
+            <li>앱 실행 시 보안 정책을 주입받아 등록하고, 원하는 Activity·Fragment에서 기능을 실행/해제하는 구조의 보안 SDK — 화면 캡처 방지와 워터마크 표시 기능으로 구성</li>
+            <li>이 중 <b>워터마크 표시 기능의 Kotlin 전환을 담당 (기여도 50%)</b> — 전환 과정에서 <b>화면 회전, 바텀시트, 멀티윈도우 환경에서도 워터마크가 유지</b>되도록 직접 대응</li>
+            <li>워터마크에 <b>현재 시각을 초 단위로 실시간 표시</b>하는 기능 추가</li>
+            <li>기존 스크린샷 감지(Android 14 <code>registerScreenCaptureCallback</code>) → 화면·로그 서버 저장 흐름의 <b>예외·오류 처리 보완</b></li>
+            <li>Flutter 기반 앱에서는 SDK 캡처 방지 처리가 동작하지 않던 문제를 <b>원인 분석 후 해결</b> — 과정은 <a href="#case-01">Case&nbsp;FSS-01</a> 참고</li>
           </ul>
           <figure style="margin:16px 0 0;"><img src="images/fss-watermark.png" alt="FSS 워터마크 적용 화면" loading="lazy" style="display:block; width:100%; border-radius:var(--radius); border:1px solid var(--line);"></figure>
+        </div>
+
+        <div class="sub">
+          <div class="sub-head"><h4>ImagePicker — 커스텀 이미지 선택 모듈</h4><span class="tag">Kotlin</span></div>
+          <ul class="bullets">
+            <li>Fireside 채팅의 이미지 첨부 품질 문제를 해결하기 위해 <b>이미지 피커를 네이티브(Kotlin)로 직접 개발</b></li>
+            <li>전송 목적에 맞춰 <b>이미지 화질(압축 수준)을 선택</b>할 수 있도록 지원</li>
+            <li>자르기·회전 처리 중 원본 해상도 Bitmap을 그대로 다뤄 발생하던 <b>OOM(메모리 부족) 문제</b>를, 단계별로 불필요해진 Bitmap을 즉시 <code>recycle()</code>하고 <b>inSampleSize 기반 다운샘플링</b>을 적용해 해결</li>
+            <li>Fireside뿐 아니라 <b>다른 사내 제품에도 붙여 쓸 수 있도록 독립 라이브러리로 개발</b></li>
+          </ul>
         </div>
 
         <div class="sub">
@@ -485,21 +498,10 @@
         </div>
 
         <div class="sub">
-          <div class="sub-head"><h4>ImagePicker — 커스텀 이미지 선택 모듈</h4><span class="tag">Kotlin</span></div>
-          <ul class="bullets">
-            <li>Fireside 채팅의 이미지 첨부 품질 문제를 해결하기 위해 <b>이미지 피커를 네이티브(Kotlin)로 직접 개발</b></li>
-            <li>전송 목적에 맞춰 <b>이미지 화질(압축 수준)을 선택</b>할 수 있도록 지원</li>
-            <li>자르기·회전 처리 중 원본 해상도 Bitmap을 그대로 다뤄 발생하던 <b>OOM(메모리 부족) 문제</b>를, 단계별로 불필요해진 Bitmap을 즉시 <code>recycle()</code>하고 <b>inSampleSize 기반 다운샘플링</b>을 적용해 해결</li>
-            <li>Fireside뿐 아니라 <b>다른 사내 제품에도 붙여 쓸 수 있도록 독립 라이브러리로 개발</b></li>
-          </ul>
-        </div>
-
-        <div class="sub">
-          <div class="sub-head"><h4>공통 화면 Template</h4><span class="tag">5 Products</span><span class="tag">Flutter</span></div>
+          <div class="sub-head"><h4>공통 화면 Template — 사내 Flutter 패키지</h4><span class="tag">5 Products</span><span class="tag">Flutter</span></div>
           <ul class="bullets">
             <li>로그인·온보딩·권한 안내·서버 등록·서버 목록·스플래시 등 <b>5개 제품</b>에서 반복 구현되던 화면들을 재사용 가능한 Flutter 패키지(<code>fasoo_design_system_templates</code>)로 표준화</li>
             <li>Template은 <b>UI 렌더링만 담당</b>하고, API 호출·화면 전환·성공/실패 처리 등 비즈니스 로직은 전부 콜백으로 소비 앱에 위임 — <code>state</code> / <code>actions</code> 두 파라미터로 인터페이스를 단순화해 소비 앱의 구현 부담 최소화</li>
-            <li>반응형 breakpoint(768px)를 <code>FdsLayout</code> 단일 소스로 관리, 여러 템플릿에 반복되던 반응형 애니메이션 로직은 <code>FdsResponsiveLayoutTransitionMixin</code>으로 추출해 중복 제거</li>
             <li>초기 UI 구현 시 <b>Figma MCP</b>를 활용해 Figma 수치·컴포넌트 매핑을 자동화, 반복 측정 작업 제거</li>
           </ul>
         </div>
@@ -512,50 +514,17 @@
           </ul>
         </div>
 
-        <p class="stack-line"><b>STACK</b> · Flutter · Kotlin · Swift · iOS App Extension · MethodChannel · GitLab CI/CD · MVVM</p>
+        <p class="stack-line"><b>STACK</b> · Kotlin · Android SDK · Swift · iOS App Extension · Flutter · MethodChannel · GitLab CI/CD · MVVM</p>
       </div>
     </section>
 
     <section id="cases">
       <div class="sec-head"><span class="eyebrow">04 · CASE LOG</span><h2>Technical Highlights — 문제 해결 사례</h2></div>
 
-      <div class="case">
+      <div class="case" id="case-01">
         <div class="case-num">01</div>
         <div class="case-body">
-          <div class="case-head"><h3>앱 배포 지연 문제 해결 — Shorebird 코드 푸시 도입</h3><span class="case-id">DEPLOY-01</span></div>
-          <dl>
-            <dt>문제</dt><dd>iOS 심사(평균 <b>1주 이상</b>) · Android 배포(<b>2~3일</b>)로 긴급 버그를 즉시 대응하기 어려웠음</dd>
-            <dt>해결</dt><dd>Flutter용 실시간 코드 패치 도구 <b>Shorebird</b>를 도입하고, <b>GitLab CI/CD와 Fastlane으로 Android·iOS 배포 파이프라인을 직접 설계</b> — 테스트 버전(Google Play 테스터 트랙·TestFlight)과 정식 배포(Google Play·App Store) 양쪽 모두 자동 연동해 Flavor별 릴리즈 체계 구축</dd>
-            <dt>결과</dt><dd>매번 수동으로 진행하던 <b>스토어 업로드·테스터 배포 과정을 자동화</b>하고, 사내 서비스 Fireside에 실제 적용해 검증. <b>네이티브 코드·에셋 등 패치 불가 영역까지 명확히 구분</b>해 팀 배포 정책 수립에 반영</dd>
-          </dl>
-          <p class="eyebrow" style="margin-top:22px; margin-bottom:8px;">패치 가능 / 불가 구분</p>
-          <div class="tag-row">
-            <span class="tag ai">Dart 코드 변경 ✓</span>
-            <span class="tag ai">UI 수정 ✓</span>
-            <span class="tag fail">Native 코드 (Kotlin · Swift)</span>
-            <span class="tag fail">앱 권한 변경</span>
-            <span class="tag fail">에셋 · 이미지</span>
-          </div>
-          <p style="margin-top:14px; font-size:0.88rem; color:var(--ink-soft);">단순 도입에 그치지 않고 패치 가능·불가 영역을 직접 검증해 분류했습니다. 이를 기반으로 긴급 버그는 Shorebird로 즉시 대응하고, Native 영역 변경이 포함된 수정은 기존 배포 프로세스를 유지하는 <b>이중 배포 정책</b>을 팀에 공유했습니다.</p>
-        </div>
-      </div>
-
-      <div class="case">
-        <div class="case-num">02</div>
-        <div class="case-body">
-          <div class="case-head"><h3>크로스플랫폼 크래시 모니터링 공백 해소 — Sentry 도입</h3><span class="case-id">MONITOR-02</span></div>
-          <dl>
-            <dt>문제</dt><dd>Firebase Crashlytics는 <b>모바일 플랫폼(Android·iOS)만 지원</b>해 Windows 환경에서는 크래시 로그 자체가 수집되지 않아 추적 사각지대 발생. Windows에서 발생한 크래시는 재현조차 어려워 원인 파악에 오랜 시간이 소요됐음</dd>
-            <dt>해결</dt><dd><code>sentry_flutter</code>를 도입해 <code>runZonedGuarded</code>로 Flutter 전역 예외를 포착하고, <code>PlatformDispatcher.onError</code>로 비동기 예외까지 커버. Flutter · Android · iOS · Windows 레이어 전체를 단일 Sentry 프로젝트로 수집하도록 구성</dd>
-            <dt>결과</dt><dd>모바일 플랫폼에서만 가능했던 크래시 수집 범위를 <b>Windows까지 확장</b>해 사각지대를 해소, 재현조차 어려웠던 Windows 크래시도 스택트레이스로 <b>즉시 원인 파악</b> 가능해짐. Flutter + Native가 혼재된 구조에서도 <b>하나의 대시보드에서 통합 관리</b></dd>
-          </dl>
-        </div>
-      </div>
-
-      <div class="case" id="case-03">
-        <div class="case-num">03</div>
-        <div class="case-body">
-        <div class="case-head"><h3>FSS — Flutter 화면에서 캡처 방지가 동작하지 않던 문제 해결</h3><span class="case-id">FSS-03</span></div>
+        <div class="case-head"><h3>FSS — Android View 계층 분석으로 Flutter 화면 캡처 방지 문제 해결</h3><span class="case-id">FSS-01</span></div>
         <dl>
           <dt>문제</dt><dd>Kotlin/Swift로 개발한 화면 캡처 방지 SDK가 Flutter로 만들어진 화면에서는 정상 동작하지 않아, 캡처 시 보호 처리 없이 빈 화면만 나오는 문제 발생</dd>
           <dt>해결</dt><dd>PixelCopy, TextureView, MediaProjection 등 <b>7가지 이상 방법</b>을 직접 검증하며 View 계층을 끝까지 탐색, <code>FlutterSurfaceView</code>가 원인임을 특정하고 렌더 타입별(TextureView/SurfaceView) 캡처·보호 로직을 분기 구현</dd>
@@ -627,13 +596,34 @@
       </div>
 
       <div class="case">
-        <div class="case-num">04</div>
+        <div class="case-num">02</div>
         <div class="case-body">
-          <div class="case-head"><h3>사내 다중 제품 공통 화면 Template 개발</h3><span class="case-id">UI-04</span></div>
+          <div class="case-head"><h3>앱 배포 체계 구축 — CI/CD 자동화 · Shorebird 코드 푸시 도입</h3><span class="case-id">DEPLOY-02</span></div>
           <dl>
-            <dt>문제</dt><dd>Wrapsody, Wrapsody eCo, Fasoo View, Fasoo View+, Fireside 등 사내 모바일 제품 <b>5종</b>에서 유사한 화면을 제품마다 각각 새로 구현해 중복 개발 비용 발생</dd>
-            <dt>해결</dt><dd>제품 전반에 공통으로 쓰이는 화면들을 재사용 가능한 Template(공통 컴포넌트)로 분리해 표준화, 각 제품은 필요한 부분만 커스터마이징해 적용하도록 설계</dd>
-            <dt>결과</dt><dd><b>5개 제품에 적용</b>해 제품별 반복 개발 공수 절감, 제품 간 UI 일관성 확보</dd>
+            <dt>문제</dt><dd>iOS 심사(평균 <b>1주 이상</b>) · Android 배포(<b>2~3일</b>)로 긴급 버그를 즉시 대응하기 어려웠음</dd>
+            <dt>해결</dt><dd><b>GitLab CI/CD와 Fastlane으로 Android·iOS 배포 파이프라인을 직접 설계</b> — 테스트 버전(Google Play 테스터 트랙·TestFlight)과 정식 배포(Google Play·App Store) 양쪽 모두 자동 연동해 Flavor별 릴리즈 체계 구축. 긴급 수정용으로 실시간 코드 패치 도구 <b>Shorebird</b>도 함께 도입</dd>
+            <dt>결과</dt><dd>매번 수동으로 진행하던 <b>스토어 업로드·테스터 배포 과정을 자동화</b>하고, 사내 서비스 Fireside에 실제 적용해 검증. <b>네이티브 코드·에셋 등 패치 불가 영역까지 명확히 구분</b>해 팀 배포 정책 수립에 반영</dd>
+          </dl>
+          <p class="eyebrow" style="margin-top:22px; margin-bottom:8px;">패치 가능 / 불가 구분</p>
+          <div class="tag-row">
+            <span class="tag ai">Dart 코드 변경 ✓</span>
+            <span class="tag ai">UI 수정 ✓</span>
+            <span class="tag fail">Native 코드 (Kotlin · Swift)</span>
+            <span class="tag fail">앱 권한 변경</span>
+            <span class="tag fail">에셋 · 이미지</span>
+          </div>
+          <p style="margin-top:14px; font-size:0.88rem; color:var(--ink-soft);">단순 도입에 그치지 않고 패치 가능·불가 영역을 직접 검증해 분류했습니다. 이를 기반으로 긴급 버그는 Shorebird로 즉시 대응하고, Native 영역 변경이 포함된 수정은 기존 배포 프로세스를 유지하는 <b>이중 배포 정책</b>을 팀에 공유했습니다.</p>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-num">03</div>
+        <div class="case-body">
+          <div class="case-head"><h3>크로스플랫폼 크래시 모니터링 공백 해소 — Sentry 도입</h3><span class="case-id">MONITOR-03</span></div>
+          <dl>
+            <dt>문제</dt><dd>Firebase Crashlytics는 <b>모바일 플랫폼(Android·iOS)만 지원</b>해 Windows 환경에서는 크래시 로그 자체가 수집되지 않아 추적 사각지대 발생. Windows에서 발생한 크래시는 재현조차 어려워 원인 파악에 오랜 시간이 소요됐음</dd>
+            <dt>해결</dt><dd><code>sentry_flutter</code>를 도입해 <code>runZonedGuarded</code>로 Flutter 전역 예외를 포착하고, <code>PlatformDispatcher.onError</code>로 비동기 예외까지 커버. Flutter · Android · iOS · Windows 레이어 전체를 단일 Sentry 프로젝트로 수집하도록 구성</dd>
+            <dt>결과</dt><dd>모바일 플랫폼에서만 가능했던 크래시 수집 범위를 <b>Windows까지 확장</b>해 사각지대를 해소, 재현조차 어려웠던 Windows 크래시도 스택트레이스로 <b>즉시 원인 파악</b> 가능해짐. Flutter + Native가 혼재된 구조에서도 <b>하나의 대시보드에서 통합 관리</b></dd>
           </dl>
         </div>
       </div>
@@ -653,7 +643,7 @@
           <span class="role-chip">기획·디자인·개발 1인 담당</span>
           <span class="role-chip">실사용 중</span>
         </div>
-        <p style="margin:14px 0 12px; padding-left:12px; border-left:3px solid var(--accent-soft); font-size:0.93rem; color:var(--ink-soft);">AI 코딩 도구를 얼마나 효율적으로 활용할 수 있는지 직접 검증하고 싶어 시작한 프로젝트입니다. Claude · Codex를 설계부터 구현까지 적극 활용해 기획·디자인·개발 전 과정을 혼자서 빠르게 완성도 높은 앱으로 만들었고, 단순 코드 생성을 넘어 AI와 함께 사고하고 출력을 검토·수정하며 실제 동작하는 서비스 수준으로 완성하는 협업 방식을 체득했습니다. 실제로 매일 사용하는 <b>나만의 맞춤 주식투자 앱</b>이며, 이후 <b>AI Agent가 매매 판단을 돕는 기능</b>을 추가 개발할 예정입니다.</p>
+        <p style="margin:14px 0 12px; padding-left:12px; border-left:3px solid var(--accent-soft); font-size:0.93rem; color:var(--ink-soft);">AI 코딩 도구를 얼마나 효율적으로 활용할 수 있는지 직접 검증하고 싶어 시작한 프로젝트입니다. Claude · Codex를 설계부터 구현까지 적극 활용해 기획·디자인·개발 전 과정을 혼자서 빠르게 완성도 높은 앱으로 만들었고, AI가 만든 코드는 그대로 쓰지 않고 직접 검토·수정해, 실제로 동작하는 서비스 수준까지 다듬었습니다. 실제로 매일 사용하는 <b>나만의 맞춤 주식투자 앱</b>이며, 이후 <b>AI Agent가 매매 판단을 돕는 기능</b>을 추가 개발할 예정입니다.</p>
         <div style="margin-bottom:16px;">
           <p class="eyebrow" style="margin-bottom:8px;">AI TOOLS USED</p>
           <div class="tag-row">
