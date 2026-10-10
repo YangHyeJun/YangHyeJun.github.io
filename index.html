@@ -232,8 +232,8 @@
     padding:30px 32px; box-shadow:var(--shadow);
   }
   .card + .card{ margin-top:22px; }
-  .card-head{ display:flex; flex-wrap:wrap; align-items:center; gap:10px 14px; margin-bottom:8px; }
-  .card-head h3{ font-size:1.15rem; font-weight:700; }
+  .card-head{ display:flex; flex-wrap:wrap; align-items:center; gap:10px 14px; margin-bottom:20px; padding-bottom:16px; border-bottom:2px solid var(--ink); }
+  .card-head h3{ font-size:1.6rem; font-weight:800; letter-spacing:-0.03em; }
   .date-chip{
     font-family:var(--sans); font-weight:600; font-size:0.78rem; color:var(--ink-soft);
     background:var(--surface-2); border-radius:100px; padding:5px 12px;
@@ -244,8 +244,9 @@
   }
   .sub{ margin-top:22px; padding-top:20px; border-top:1px solid var(--line); }
   .sub:first-of-type{ margin-top:20px; }
+  .card-head + .sub{ margin-top:0; padding-top:0; border-top:none; }
   .sub-head{ display:flex; flex-wrap:wrap; align-items:center; gap:8px 10px; margin-bottom:10px; }
-  .sub-head h4{ font-family:var(--sans); font-weight:700; font-size:1rem; margin:0; }
+  .sub-head h4{ font-family:var(--sans); font-weight:700; font-size:1rem; line-height:1.35; margin:0; padding-left:10px; border-left:3px solid var(--accent); }
   ul.bullets{ margin:0; padding-left:1.15em; }
   ul.bullets li{ margin:6px 0; font-size:0.95rem; line-height:1.7; color:var(--ink-soft); }
   ul.bullets li::marker{ color:var(--ink-faint); }
@@ -386,71 +387,6 @@
 
     <section id="experience">
       <div class="sec-head"><span class="eyebrow">03 · EXPERIENCE</span><h2>Work Experience</h2></div>
-
-      <div class="card">
-        <div class="card-head">
-          <h3>파수에이아이</h3>
-          <span class="date-chip">2024.08 – 현재</span>
-        </div>
-
-        <div class="sub">
-          <div class="sub-head"><h4>Fireside — 사내 협업 메신저</h4><span class="tag">Flutter</span><span class="tag">v2.1 – v2.6 진행중</span><span class="tag">모바일 2인 개발</span></div>
-          <ul class="bullets">
-            <li><b>v2.1부터 개발 담당</b>, Android · iOS 각각 출시 경험</li>
-            <li><b>문서관리 + 채팅 통합</b> B2B 협업 메신저 개발 담당</li>
-            <li>Android · iOS 푸시 알림, <b>AI 챗봇</b> 기능, <b>보안 문서 연동 및 열람 지원</b> 등 신규 기능 개발</li>
-          </ul>
-          <div class="proj-links" style="margin-top:12px; margin-bottom:4px;">
-            <a class="btn" href="https://play.google.com/store/apps/details?id=com.fasoo.m.chat" target="_blank" rel="noopener">Google Play ↗</a>
-            <a class="btn" href="https://apps.apple.com/kr/app/fasoo-fireside/id1577112344" target="_blank" rel="noopener">App Store ↗</a>
-          </div>
-          <div class="gallery" role="list">
-            <figure class="phone" role="listitem"><img src="images/fireside-chat.jpg" alt="Fireside 채팅 화면" loading="lazy"><figcaption>채팅</figcaption></figure>
-            <figure class="phone" role="listitem"><img src="images/fireside-settings.jpg" alt="Fireside 설정 화면" loading="lazy"><figcaption>설정</figcaption></figure>
-          </div>
-        </div>
-
-        <div class="sub">
-          <div class="sub-head"><h4>ImagePicker — 커스텀 이미지 선택 모듈</h4><span class="tag">Kotlin</span></div>
-          <ul class="bullets">
-            <li>Fireside 채팅의 이미지 첨부 품질 문제를 해결하기 위해 <b>이미지 피커를 네이티브(Kotlin)로 직접 개발</b></li>
-            <li>전송 목적에 맞춰 <b>이미지 화질(압축 수준)을 선택</b>할 수 있도록 지원</li>
-            <li>자르기·회전 처리 중 원본 해상도 Bitmap을 그대로 다뤄 발생하던 <b>OOM(메모리 부족) 문제</b>를, 단계별로 불필요해진 Bitmap을 즉시 <code>recycle()</code>하고 <b>inSampleSize 기반 다운샘플링</b>을 적용해 해결</li>
-            <li>Fireside뿐 아니라 <b>다른 사내 제품에도 붙여 쓸 수 있도록 독립 라이브러리로 개발</b></li>
-          </ul>
-        </div>
-
-        <div class="sub">
-          <div class="sub-head"><h4>FSS (Fasoo Smart Screen) — 화면 캡처 방지 · 워터마크 SDK</h4><span class="tag">Kotlin</span><span class="tag">Swift</span></div>
-          <ul class="bullets">
-            <li>앱 시작 시 <b>외부에서 보안 정책을 주입받아 SDK를 등록</b>하고, 캡처 방지·워터마크 기능을 적용하고 싶은 화면·프레임워크 지점에서 <b>기능 실행/해제 함수를 호출</b>하는 구조로 설계 — 소비 앱이 정책·적용 범위를 자유롭게 제어할 수 있도록 함</li>
-            <li>화면 캡처 방지 기능과 워터마크 표시 기능으로 구성된 SDK 중, <b>워터마크 표시 기능의 Kotlin 전환을 담당 (기여도 50%)</b></li>
-            <li>Flutter 기반 앱에서는 SDK 캡처 방지 처리가 동작하지 않던 문제를 <b>근본 원인까지 분석해 해결</b> — 과정은 <a href="#case-03">Case&nbsp;FSS-03</a> 참고</li>
-          </ul>
-          <figure style="margin:16px 0 0;"><img src="images/fss-watermark.png" alt="FSS 워터마크 적용 화면" loading="lazy" style="display:block; width:100%; border-radius:var(--radius); border:1px solid var(--line);"></figure>
-        </div>
-
-        <div class="sub">
-          <div class="sub-head"><h4>공통 화면 Template</h4><span class="tag">5 Products</span><span class="tag">Flutter</span></div>
-          <ul class="bullets">
-            <li>로그인·온보딩·권한 안내·서버 등록·서버 목록·스플래시 등 <b>5개 제품</b>에서 반복 구현되던 화면들을 재사용 가능한 Flutter 패키지(<code>fasoo_design_system_templates</code>)로 표준화</li>
-            <li>Template은 <b>UI 렌더링만 담당</b>하고, API 호출·화면 전환·성공/실패 처리 등 비즈니스 로직은 전부 콜백으로 소비 앱에 위임 — <code>state</code> / <code>actions</code> 두 파라미터로 인터페이스를 단순화해 소비 앱의 구현 부담 최소화</li>
-            <li>반응형 breakpoint(768px)를 <code>FdsLayout</code> 단일 소스로 관리, 여러 템플릿에 반복되던 반응형 애니메이션 로직은 <code>FdsResponsiveLayoutTransitionMixin</code>으로 추출해 중복 제거</li>
-            <li>초기 UI 구현 시 <b>Figma MCP</b>를 활용해 Figma 수치·컴포넌트 매핑을 자동화, 반복 측정 작업 제거</li>
-          </ul>
-        </div>
-
-        <div class="sub">
-          <div class="sub-head"><h4>기타</h4></div>
-          <ul class="bullets">
-            <li>iOS App Extension으로 사내 전화 수신 화면에 발신자 소속·직급 정보를 표시하는 기능 개발 (Spotlight Extension 활용), 통화 종료 후 로컬 알림 흐름 설계</li>
-            <li>MVVM 기반 클린 아키텍처 스터디 리드, 코드 리뷰 진행</li>
-          </ul>
-        </div>
-
-        <p class="stack-line"><b>STACK</b> · Flutter · Kotlin · Swift · iOS App Extension · MethodChannel · GitLab CI/CD · MVVM</p>
-      </div>
-
       <div class="card">
         <div class="card-head">
           <h3>Coxspace</h3>
@@ -514,6 +450,70 @@
           <figure class="phone" role="listitem"><img src="images/vanzy-app2.png" alt="Vanzy 앱 화면 2" loading="lazy"><figcaption>앱 화면 2</figcaption></figure>
         </div>
       </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>파수에이아이</h3>
+          <span class="date-chip">2024.08 – 현재</span>
+        </div>
+
+        <div class="sub">
+          <div class="sub-head"><h4>FSS (Fasoo Smart Screen) — 화면 캡처 방지 · 워터마크 SDK</h4><span class="tag">Kotlin</span><span class="tag">Swift</span></div>
+          <ul class="bullets">
+            <li>앱 시작 시 <b>외부에서 보안 정책을 주입받아 SDK를 등록</b>하고, 캡처 방지·워터마크 기능을 적용하고 싶은 화면·프레임워크 지점에서 <b>기능 실행/해제 함수를 호출</b>하는 구조로 설계 — 소비 앱이 정책·적용 범위를 자유롭게 제어할 수 있도록 함</li>
+            <li>화면 캡처 방지 기능과 워터마크 표시 기능으로 구성된 SDK 중, <b>워터마크 표시 기능의 Kotlin 전환을 담당 (기여도 50%)</b></li>
+            <li>Flutter 기반 앱에서는 SDK 캡처 방지 처리가 동작하지 않던 문제를 <b>원인 분석 후 해결</b> — 과정은 <a href="#case-03">Case&nbsp;FSS-03</a> 참고</li>
+          </ul>
+          <figure style="margin:16px 0 0;"><img src="images/fss-watermark.png" alt="FSS 워터마크 적용 화면" loading="lazy" style="display:block; width:100%; border-radius:var(--radius); border:1px solid var(--line);"></figure>
+        </div>
+
+        <div class="sub">
+          <div class="sub-head"><h4>Fireside — 사내 협업 메신저</h4><span class="tag">Flutter</span><span class="tag">v2.1 – v2.6 진행중</span><span class="tag">모바일 2인 개발</span></div>
+          <ul class="bullets">
+            <li><b>v2.1부터 개발 담당</b>, Android · iOS 각각 출시 경험</li>
+            <li><b>문서관리 + 채팅 통합</b> B2B 협업 메신저 개발 담당</li>
+            <li>Android · iOS 푸시 알림, <b>AI 챗봇</b> 기능, <b>보안 문서 연동 및 열람 지원</b> 등 신규 기능 개발</li>
+          </ul>
+          <div class="proj-links" style="margin-top:12px; margin-bottom:4px;">
+            <a class="btn" href="https://play.google.com/store/apps/details?id=com.fasoo.m.chat" target="_blank" rel="noopener">Google Play ↗</a>
+            <a class="btn" href="https://apps.apple.com/kr/app/fasoo-fireside/id1577112344" target="_blank" rel="noopener">App Store ↗</a>
+          </div>
+          <div class="gallery" role="list">
+            <figure class="phone" role="listitem"><img src="images/fireside-chat.jpg" alt="Fireside 채팅 화면" loading="lazy"><figcaption>채팅</figcaption></figure>
+            <figure class="phone" role="listitem"><img src="images/fireside-settings.jpg" alt="Fireside 설정 화면" loading="lazy"><figcaption>설정</figcaption></figure>
+          </div>
+        </div>
+
+        <div class="sub">
+          <div class="sub-head"><h4>ImagePicker — 커스텀 이미지 선택 모듈</h4><span class="tag">Kotlin</span></div>
+          <ul class="bullets">
+            <li>Fireside 채팅의 이미지 첨부 품질 문제를 해결하기 위해 <b>이미지 피커를 네이티브(Kotlin)로 직접 개발</b></li>
+            <li>전송 목적에 맞춰 <b>이미지 화질(압축 수준)을 선택</b>할 수 있도록 지원</li>
+            <li>자르기·회전 처리 중 원본 해상도 Bitmap을 그대로 다뤄 발생하던 <b>OOM(메모리 부족) 문제</b>를, 단계별로 불필요해진 Bitmap을 즉시 <code>recycle()</code>하고 <b>inSampleSize 기반 다운샘플링</b>을 적용해 해결</li>
+            <li>Fireside뿐 아니라 <b>다른 사내 제품에도 붙여 쓸 수 있도록 독립 라이브러리로 개발</b></li>
+          </ul>
+        </div>
+
+        <div class="sub">
+          <div class="sub-head"><h4>공통 화면 Template</h4><span class="tag">5 Products</span><span class="tag">Flutter</span></div>
+          <ul class="bullets">
+            <li>로그인·온보딩·권한 안내·서버 등록·서버 목록·스플래시 등 <b>5개 제품</b>에서 반복 구현되던 화면들을 재사용 가능한 Flutter 패키지(<code>fasoo_design_system_templates</code>)로 표준화</li>
+            <li>Template은 <b>UI 렌더링만 담당</b>하고, API 호출·화면 전환·성공/실패 처리 등 비즈니스 로직은 전부 콜백으로 소비 앱에 위임 — <code>state</code> / <code>actions</code> 두 파라미터로 인터페이스를 단순화해 소비 앱의 구현 부담 최소화</li>
+            <li>반응형 breakpoint(768px)를 <code>FdsLayout</code> 단일 소스로 관리, 여러 템플릿에 반복되던 반응형 애니메이션 로직은 <code>FdsResponsiveLayoutTransitionMixin</code>으로 추출해 중복 제거</li>
+            <li>초기 UI 구현 시 <b>Figma MCP</b>를 활용해 Figma 수치·컴포넌트 매핑을 자동화, 반복 측정 작업 제거</li>
+          </ul>
+        </div>
+
+        <div class="sub">
+          <div class="sub-head"><h4>기타</h4></div>
+          <ul class="bullets">
+            <li>iOS App Extension으로 사내 전화 수신 화면에 발신자 소속·직급 정보를 표시하는 기능 개발 (Spotlight Extension 활용), 통화 종료 후 로컬 알림 흐름 설계</li>
+            <li>MVVM 기반 클린 아키텍처 스터디 리드, 코드 리뷰 진행</li>
+          </ul>
+        </div>
+
+        <p class="stack-line"><b>STACK</b> · Flutter · Kotlin · Swift · iOS App Extension · MethodChannel · GitLab CI/CD · MVVM</p>
+      </div>
     </section>
 
     <section id="cases">
@@ -555,11 +555,11 @@
       <div class="case" id="case-03">
         <div class="case-num">03</div>
         <div class="case-body">
-        <div class="case-head"><h3>FSS — 공식 문서에 명확한 가이드가 없던 이슈를 근본 원인까지 파고들어 해결</h3><span class="case-id">FSS-03</span></div>
+        <div class="case-head"><h3>FSS — Flutter 화면에서 캡처 방지가 동작하지 않던 문제 해결</h3><span class="case-id">FSS-03</span></div>
         <dl>
           <dt>문제</dt><dd>Kotlin/Swift로 개발한 화면 캡처 방지 SDK가 Flutter로 만들어진 화면에서는 정상 동작하지 않아, 캡처 시 보호 처리 없이 빈 화면만 나오는 문제 발생</dd>
           <dt>해결</dt><dd>PixelCopy, TextureView, MediaProjection 등 <b>7가지 이상 방법</b>을 직접 검증하며 View 계층을 끝까지 탐색, <code>FlutterSurfaceView</code>가 원인임을 특정하고 렌더 타입별(TextureView/SurfaceView) 캡처·보호 로직을 분기 구현</dd>
-          <dt>결과</dt><dd>공식 문서에 명확한 가이드가 없던 이슈를 <b>근본 원인까지 파고들어 해결</b>, Flutter 기반 제품까지 SDK 지원 범위 확대</dd>
+          <dt>결과</dt><dd>공식 문서에 관련 가이드가 없던 문제를 해결해 <b>Flutter 기반 제품에서도 SDK를 사용</b>할 수 있도록 지원 범위 확대</dd>
         </dl>
         <p class="eyebrow" style="margin-top:22px; margin-bottom:8px;">시도해본 방법</p>
         <div class="tag-row">
